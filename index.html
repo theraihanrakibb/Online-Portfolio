@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/969fef4495.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!---------Header------>
+  <div id="header">
+    <div class="container">
+      <nav>
+        <img src="images/logo.png" class="logo">
+        <ul id="sidemenu">
+          <li><a href="#header">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <i class="fa-solid fa-circle-xmark" ondblclick="closemenu()"></i>
+        </ul>
+        <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+      </nav>
+      <div class="header-text">
+        <p><span>Full Stack Engineer</span></p>
+        <h1>Hello, I'm <span>Raihan</span><br>Md Rakibul Islam. Welcome !!! <i class="fa-solid fa-handshake fa-shake"></i></h1>
+      </div>
+    </div>
+  </div>
+<!-------------------About-------------------->
+  <div id="about">
+    <div class="container">
+      <div class="row">
+        <div class="about-col-1">
+          <img src="images/user.png" alt="">
+        </div>
+        <div class="about-col-2">
+          <h1 class="sub-title">About Me</h1>
+          <p>Motivated and technically skilled recent graduate with expertise in JavaScript and Node.js, seeking a position to apply front-end and back-end development skills. Passionate about learning and contributing to dynamic web projects</p>
+          
+          <div class="tab-titles">
+            <p class="tab-links active-link" onclick="opentab(event, 'skills')">Skills</p>
+            <p class="tab-links" onclick="opentab(event, 'experience')">Experience</p>
+            <p class="tab-links" onclick="opentab(event, 'education')">Education</p>
+          </div>
+          <div class="tab-contents active-tab" id="skills">
+            <ul>
+              <li><span>JavaScript(ES6+), C++</span><br> Programming Languages</li>
+              <li><span>HTML5, CSS3</span><br>Front-end Technologies</li>
+              <li><span>Node.js</span><br>Back-end Technologies</li>
+              <li><span>App Development</span><br>Building Web Apps</li>
+            </ul>
+          </div>
+          <div class="tab-contents" id="experience">
+            <ul>
+              <li><span>Mar 01, 2021 – Mar 1, 2022 </span><br>Board Member Of Student Union (Campus Experience)</li>
+            </ul>
+          </div>
+          <div class="tab-contents" id="education">
+            <ul>
+              <li><span>Sep 01, 2020 – July 15, 2024</span><br>Northwestern Polytechnical University (Undergraduate)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-----------Services----------->
+  <div id="services">
+    <div class="container">
+      <h1 class="sub-title">My Services</h1>
+      <div class="services-list">
+        <div>
+          <i class="fa-solid fa-code fa-beat-fade"></i>
+          <h2>Web Design</h2>
+          <p>Create a Strong Online Presence with Our Web Design Services! We specialize in crafting visually appealing and highly functional websites that resonate with your audience. Whether you're an individual looking for a captivating portfolio or a business in need of a professional corporate website, our team is here to turn your ideas into reality. We focus on delivering intuitive navigation, responsive design, and user-centered experiences to help you stand out in the digital world.</p>
+          <a href="#">Learn more</a>
+        </div>
+        
+        <div>
+          <i class="fa-solid fa-crop fa-flip"></i>
+          <h2>UI/UX Design</h2>
+          <p>Elevate User Engagement with Our UI/UX Design Services! We're passionate about creating seamless interactions and intuitive user interfaces. Our expert designers work closely with you to understand your users' needs and craft interfaces that not only look great but also enhance usability. From wireframing to prototyping, we're committed to delivering user experiences that keep your visitors engaged and satisfied.</p>
+          <a href="#">Learn more</a>
+        </div>
+        
+        <div>
+          <i class="fa-brands fa-app-store fa-shake"></i>
+          <h2>Apps Design</h2>
+          <p>Transform Ideas into Interactive Experiences with Our Apps Design Services! In the fast-paced world of mobile applications, we're your partners in creating standout app designs. Whether it's iOS or Android, we specialize in designing app interfaces that are visually appealing and user-focused. From sleek navigation to attention-grabbing visuals, we're here to bring your app ideas to life and ensure they leave a lasting impression.</p>
+          <a href="#">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<!----------Portfolio--------->>
+  <div id="portfolio">
+    <div class="container">
+      <h1 class="sub-title">My Works</h1>
+      <div class="work-list">
+        <div class="work">
+          <img src="images/work-1.png">
+          <div class="layer">
+            <h3>Weather App</h3>
+            <p>Visit my GitHub repository for more information on this project, which is based on my work and talents. You may find all of the work-based, various skills here.</p>
+            <a href="https://theraihanrakibb.github.io/Weather-App/"><i class="fa-solid fa-arrow-up-right-from-square fa-bounce"></i></a>
+          </div>
+        </div>
+        <div class="work">
+          <img src="images/work-2.png">
+          <div class="layer">
+            <h3>Online Code Editor</h3>
+            <p>Visit my GitHub repository for more information on this project, which is based on my work and talents. You may find all of the work-based, various skills here.</p>
+            <a href="https://theraihanrakibb.github.io/Online-CodeEditor/"><i class="fa-solid fa-arrow-up-right-from-square fa-bounce"></i></a>
+          </div>
+        </div>
+        <div class="work">
+          <img src="images/work-3.png">
+          <div class="layer">
+            <h3>Website Design</h3>
+            <p>Visit my GitHub repository for more information on this project, which is based on my work and talents. You may find all of the work-based, various skills here.</p>
+            <a href="https://github.com/theraihanrakibb"><i class="fa-solid fa-arrow-up-right-from-square fa-bounce"></i></a>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="btn">See more</a>
+    </div>
+  </div>
+<!-------Contact----->
+  <div id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="contact-left">
+          <h1 class="sub-title">Contact Me</h1>
+          <p><i class="fa-regular fa-envelope fa-flip"></i>raihanrakib.143@gmail.com</p>
+          <p><i class="fa-solid fa-phone fa-shake"></i>155-0293-8795</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/theraihanrakib/"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/theraihanrakib/"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://twitter.com/theraihanrakib"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/theraihanrakib/"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/theraihanrakibb"><i class="fa-brands fa-github"></i></a>
+            <a href="https://leetcode.com/2020380029/"><i class="fa-solid fa-code"></i></a>
+          </div>
+          <a href="images/my-cv.pdf" download class="btn btn2">Download CV</a>
+        </div>
+        <div class="contact-right">
+          <form name="submit-to-google-sheet">
+            <input type="text" name="Name" placeholder="Your Name" required>
+            <input type="email" name="Email" placeholder="Your Email" required>
+            <textarea name="Message" rows="6" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn btn2" onclick>Submit</button>
+          </form>
+          <span id="msg"></span>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>Copyright © Raihan. <i class="fa-regular fa-heart fa-flip"></i> Powered by XINITZ !</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

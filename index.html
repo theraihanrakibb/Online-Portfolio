@@ -127,6 +127,19 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:.82rem;border
   .nav-links.open{display:flex}
   .menu-btn{display:block}
 }
+
+/* Theme toggle button */
+.theme-btn{background:none;border:1px solid var(--border);color:var(--text);font-size:1.1rem;cursor:pointer;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;margin-left:8px}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Light theme */
+body.light{--bg:#f5f7fa;--bg2:#ffffff;--card:rgba(0,0,0,.02);--card-hover:rgba(0,0,0,.04);--border:rgba(0,0,0,.08);--text:#1a1a2e;--muted:#5a6378}
+body.light .bg-animation::before{opacity:.08}
+body.light .bg-animation::after{opacity:.08}
+body.light .btn-primary{color:#fff}
+body.light .contact-ico{color:#fff}
+body.light .tl-dot{border-color:var(--bg)}
+
 </style>
 </head>
 <body>
@@ -139,6 +152,7 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:.82rem;border
       <a href="#hero">Home</a><a href="#about">About</a><a href="#exp">Experience</a>
       <a href="#research">Research</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
     </div>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">&#9202;</button>
     <button class="menu-btn" id="menuBtn">&#9776;</button>
   </div>
 </nav>
@@ -151,6 +165,7 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:.82rem;border
     <div class="hero-btns">
       <a href="#contact" class="btn btn-primary">Get in Touch</a>
       <a href="#projects" class="btn btn-ghost">View Projects</a>
+      <a href="assets/resume.pdf" download class="btn btn-ghost">Download Resume</a>
     </div>
     <div class="hero-badges">
       <span class="badge">NWPU Top 1%</span>
@@ -307,7 +322,7 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:.82rem;border
   </div>
 </section>
 
-<footer><p>&copy; 2026 MD RAKIBUL ISLAM RAIHAN &#8226; Xi'an, China</p></footer>
+<footer><p>&copy; 2026 MD RAKIBUL ISLAM RAIHAN</p></footer>
 
 <script>
 // Typing
@@ -328,6 +343,14 @@ nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nl.classList
 // Scroll animations
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
 document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// Theme toggle
+const themeBtn=document.getElementById('themeBtn');
+themeBtn.addEventListener('click',()=>{
+  document.body.classList.toggle('light');
+  themeBtn.innerHTML=document.body.classList.contains('light')?'&#9788;':'&#9202;';
+});
+
 </script>
 </body>
 </html>

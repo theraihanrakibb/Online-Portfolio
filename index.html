@@ -50,7 +50,7 @@ nav.scrolled{background:rgba(8,11,20,.8);backdrop-filter:blur(20px);border-botto
 .hero-role{font-family:'JetBrains Mono',monospace;font-size:clamp(1rem,3vw,1.4rem);color:var(--accent);margin-bottom:16px;min-height:1.8em}
 .cursor{color:var(--accent);animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
-.hero-tag{color:var(--muted);font-size:1rem;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+.hero-tag{color:var(--muted);font-size:1rem;margin-bottom:32px;max-width:560px;margin-left:auto;margin-right:auto}
 .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
 .btn{padding:13px 30px;border-radius:50px;font-weight:600;font-size:.9rem;transition:all .3s;cursor:pointer;border:none}
 .btn-primary{background:var(--grad);color:#080b14}
@@ -62,7 +62,7 @@ nav.scrolled{background:rgba(8,11,20,.8);backdrop-filter:blur(20px);border-botto
 
 /* Hero two-column + availability pill + photo */
 .hero-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:56px;flex-wrap:wrap}
-.hero-text{text-align:left;flex:1;min-width:300px}
+.hero-text{text-align:center;flex:1;min-width:300px;max-width:640px}
 .avail-pill{display:inline-block;padding:8px 18px;border-radius:50px;background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.4);color:var(--accent);font-size:.85rem;font-weight:600;margin-bottom:22px;box-shadow:0 0 22px rgba(0,229,255,.18)}
 .hero-photo{background:var(--grad);padding:4px;border-radius:50%;box-shadow:0 0 44px rgba(0,229,255,.28);flex-shrink:0}
 .hero-photo img{width:220px;height:220px;border-radius:50%;object-fit:cover;display:block;border:3px solid var(--bg)}
@@ -162,9 +162,9 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:.82rem;border
   .hero-photo img{width:170px;height:170px}
 }
 
-/* Theme toggle button */
-.theme-btn{background:none;border:1px solid var(--border);color:var(--text);font-size:1.1rem;cursor:pointer;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;margin-left:8px}
-.theme-btn:hover{border-color:var(--accent);color:var(--accent)}
+/* Toggle buttons */
+.toggle-btn{background:none;border:1px solid var(--border);color:var(--text);font-size:1.1rem;cursor:pointer;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;margin-left:8px;font-family:'Inter',sans-serif}
+.toggle-btn:hover{border-color:var(--accent);color:var(--accent)}
 
 /* Light theme */
 body.light{--bg:#f5f7fa;--bg2:#ffffff;--card:rgba(0,0,0,.02);--card-hover:rgba(0,0,0,.04);--border:rgba(0,0,0,.08);--text:#1a1a2e;--muted:#5a6378}
@@ -183,10 +183,11 @@ body.light .tl-dot{border-color:var(--bg)}
   <div class="nav-inner">
     <a href="#" class="logo">MRIR</a>
     <div class="nav-links" id="navLinks">
-      <a href="#hero">Home</a><a href="#about">About</a><a href="#exp">Experience</a>
-      <a href="#research">Research</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+      <a href="#hero" data-i18n="nav.home">Home</a><a href="#about" data-i18n="nav.about">About</a><a href="#exp" data-i18n="nav.exp">Experience</a>
+      <a href="#research" data-i18n="nav.research">Research</a><a href="#projects" data-i18n="nav.projects">Projects</a><a href="#skills" data-i18n="nav.skills">Skills</a><a href="#contact" data-i18n="nav.contact">Contact</a>
     </div>
-    <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">&#9202;</button>
+    <button class="toggle-btn" id="themeBtn" aria-label="Toggle theme">&#9202;</button>
+    <button class="toggle-btn" id="langBtn" aria-label="Toggle language">中</button>
     <button class="menu-btn" id="menuBtn">&#9776;</button>
   </div>
 </nav>
@@ -194,19 +195,19 @@ body.light .tl-dot{border-color:var(--bg)}
 <section class="hero" id="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="avail-pill">🎓 Open to 2027 New Grad Roles · China &amp; Hong Kong</div>
+      <div class="avail-pill" data-i18n="avail">🎓 Open to 2027 New Grad Roles · China &amp; Hong Kong</div>
       <h1><span class="name-grad">MD RAKIBUL ISLAM RAIHAN</span></h1>
       <div class="hero-role"><span id="typed"></span><span class="cursor">|</span></div>
-      <p class="hero-tag">LLM Inference Systems &#8226; GPU Optimization &#8226; Multimodal AI Research</p>
+      <p class="hero-tag" data-i18n="heroTag">LLM Inference Systems &#8226; GPU Optimization &#8226; Multimodal AI Research</p>
       <div class="hero-btns">
-        <a href="#contact" class="btn btn-primary">Get in Touch</a>
-        <a href="#projects" class="btn btn-ghost">View Projects</a>
-        <a href="https://github.com/theraihanrakibb/Online-Portfolio/raw/main/assets/resume.pdf" target="_blank" class="btn btn-primary" style="background:linear-gradient(135deg,#ff5e9c,#b566ff)">Download Resume</a>
+        <a href="#contact" class="btn btn-primary" data-i18n="btn.touch">Get in Touch</a>
+        <a href="#projects" class="btn btn-ghost" data-i18n="btn.projects">View Projects</a>
+        <a href="https://github.com/theraihanrakibb/Online-Portfolio/raw/main/assets/resume.pdf" target="_blank" class="btn btn-primary" style="background:linear-gradient(135deg,#ff5e9c,#b566ff)" data-i18n="btn.resume">Download Resume</a>
       </div>
       <div class="hero-badges">
-        <span class="badge">NWPU Top 1%</span>
-        <span class="badge">Chinese Gov Scholarship</span>
-        <span class="badge">IEEE TNNLS Under Review</span>
+        <span class="badge" data-i18n="badge.nwpu">NWPU Top 1%</span>
+        <span class="badge" data-i18n="badge.scholar">Chinese Gov Scholarship</span>
+        <span class="badge" data-i18n="badge.ieee">IEEE TNNLS Under Review</span>
       </div>
     </div>
     <div class="hero-photo">
@@ -217,31 +218,31 @@ body.light .tl-dot{border-color:var(--bg)}
 
 <section id="stats" style="padding:40px 24px">
   <div class="container stats-grid">
-    <div class="stat fade-in"><div class="stat-num">92.27%</div><div class="stat-label">KV-cache hit rate</div></div>
-    <div class="stat fade-in"><div class="stat-num">8.3&times;</div><div class="stat-label">TTFT reduction (4&times;A800 PD)</div></div>
-    <div class="stat fade-in"><div class="stat-num">4&times;</div><div class="stat-label">Memory (FP4 / NVFP4-DiT)</div></div>
-    <div class="stat fade-in"><div class="stat-num">10</div><div class="stat-label">Production OSS repos</div></div>
+    <div class="stat fade-in"><div class="stat-num">92.27%</div><div class="stat-label" data-i18n="stat.kv">KV-cache hit rate</div></div>
+    <div class="stat fade-in"><div class="stat-num">8.3&times;</div><div class="stat-label" data-i18n="stat.ttft">TTFT reduction (4&times;A800 PD)</div></div>
+    <div class="stat fade-in"><div class="stat-num">4&times;</div><div class="stat-label" data-i18n="stat.mem">Memory (FP4 / NVFP4-DiT)</div></div>
+    <div class="stat fade-in"><div class="stat-num">10</div><div class="stat-label" data-i18n="stat.repos">Production OSS repos</div></div>
   </div>
 </section>
 
 <section id="about">
   <div class="container">
-    <h2 class="sec-title fade-in">About <span>Me</span></h2>
+    <h2 class="sec-title fade-in" data-i18n="about.title">About <span>Me</span></h2>
     <div class="about-grid">
       <div class="card fade-in">
         <div class="card-icon">&#9881;&#65039;</div>
-        <h3>AI Infrastructure</h3>
-        <p>Designed 3-tier KV-cache (GPU&#8594;CPU&#8594;SSD) with SGLang + RDMA achieving <strong>92.27% hit rate</strong> and <strong>8.3x TTFT reduction</strong> on 4xA800.</p>
+        <h3 data-i18n="about.ai.h">AI Infrastructure</h3>
+        <p data-i18n="about.ai.p">Designed 3-tier KV-cache (GPU&#8594;CPU&#8594;SSD) with SGLang + RDMA achieving <strong>92.27% hit rate</strong> and <strong>8.3x TTFT reduction</strong> on 4xA800.</p>
       </div>
       <div class="card fade-in">
         <div class="card-icon">&#128202;</div>
-        <h3>Research</h3>
-        <p>First author IEEE TNNLS paper on <strong>NVFP4-DiT</strong> &#8212; 4-bit quantization for video diffusion achieving <strong>4x memory reduction</strong>.</p>
+        <h3 data-i18n="about.research.h">Research</h3>
+        <p data-i18n="about.research.p">First author IEEE TNNLS paper on <strong>NVFP4-DiT</strong> &#8212; 4-bit quantization for video diffusion achieving <strong>4x memory reduction</strong>.</p>
       </div>
       <div class="card fade-in">
         <div class="card-icon">&#127891;</div>
-        <h3>Education</h3>
-        <p>M.Eng. Software Engineering @ NWPU (985/211), Top 1%, GPA 88/100. Chinese Government Scholarship.</p>
+        <h3 data-i18n="about.edu.h">Education</h3>
+        <p data-i18n="about.edu.p">M.Eng. Software Engineering @ NWPU (985/211), Top 1%, GPA 88/100. Chinese Government Scholarship.</p>
       </div>
     </div>
   </div>
@@ -249,33 +250,33 @@ body.light .tl-dot{border-color:var(--bg)}
 
 <section id="exp" style="background:var(--bg2)">
   <div class="container">
-    <h2 class="sec-title fade-in">Experience</h2>
+    <h2 class="sec-title fade-in" data-i18n="exp.title">Experience</h2>
     <div class="timeline">
       <div class="tl-item fade-in"><div class="tl-dot"></div><div class="tl-content">
-        <h3>AI Infrastructure Engineer Intern</h3>
-        <p class="tl-company">InfiX.ai &#8226; Shenzhen &#8226; Apr 2026 &#8211; Jun 2026</p>
+        <h3 data-i18n="exp1.h">AI Infrastructure Engineer Intern</h3>
+        <p class="tl-company" data-i18n="exp1.c">InfiX.ai &#8226; Shenzhen &#8226; Apr 2026 &#8211; Jun 2026</p>
         <ul>
-          <li>Designed 3-tier KV-cache (GPU HBM &#8594; CPU DRAM &#8594; SSD) with SGLang + Mooncake RDMA &#8212; <strong>92.27% hit rate</strong>, <strong>8.3x TTFT reduction</strong> (55s&#8594;6.7s)</li>
-          <li>Patched SGLang source (kvcacheio.py, hiradix_cache.py) for hybrid-attention Qwen on 4xA800</li>
-          <li>Built PD-disaggregated serving with RDMA KV sharing &#8212; concurrency <strong>192&#8594;256</strong></li>
-          <li>Profiled CUDA/Triton with Nsight Systems, FP8 optimization</li>
-          <li>Resolved 12+ production issues (RDMA, etcd, networking)</li>
+          <li data-i18n="exp1.b1">Designed 3-tier KV-cache (GPU HBM &#8594; CPU DRAM &#8594; SSD) with SGLang + Mooncake RDMA &#8212; <strong>92.27% hit rate</strong>, <strong>8.3x TTFT reduction</strong> (55s&#8594;6.7s)</li>
+          <li data-i18n="exp1.b2">Patched SGLang source (kvcacheio.py, hiradix_cache.py) for hybrid-attention Qwen on 4xA800</li>
+          <li data-i18n="exp1.b3">Built PD-disaggregated serving with RDMA KV sharing &#8212; concurrency <strong>192&#8594;256</strong></li>
+          <li data-i18n="exp1.b4">Profiled CUDA/Triton with Nsight Systems, FP8 optimization</li>
+          <li data-i18n="exp1.b5">Resolved 12+ production issues (RDMA, etcd, networking)</li>
         </ul>
       </div></div>
       <div class="tl-item fade-in"><div class="tl-dot"></div><div class="tl-content">
-        <h3>Software Engineer Intern (AI Agent)</h3>
-        <p class="tl-company">Hong Kong Amram Group &#8226; Shenzhen &#8226; Jun 2025 &#8211; Sep 2025</p>
+        <h3 data-i18n="exp2.h">Software Engineer Intern (AI Agent)</h3>
+        <p class="tl-company" data-i18n="exp2.c">Hong Kong Amram Group &#8226; Shenzhen &#8226; Jun 2025 &#8211; Sep 2025</p>
         <ul>
-          <li>Full-stack apps with React, REST APIs, backend automation</li>
-          <li>AI-agent workflow automation improving efficiency by <strong>25%</strong></li>
+          <li data-i18n="exp2.b1">Full-stack apps with React, REST APIs, backend automation</li>
+          <li data-i18n="exp2.b2">AI-agent workflow automation improving efficiency by <strong>25%</strong></li>
         </ul>
       </div></div>
       <div class="tl-item fade-in"><div class="tl-dot"></div><div class="tl-content">
-        <h3>Electrical Software Engineer Intern</h3>
-        <p class="tl-company">Shaanxi Longong &#8226; Xi'an &#8226; Feb 2025 &#8211; Apr 2025</p>
+        <h3 data-i18n="exp3.h">Electrical Software Engineer Intern</h3>
+        <p class="tl-company" data-i18n="exp3.c">Shaanxi Longong &#8226; Xi&#8217;an &#8226; Feb 2025 &#8211; Apr 2025</p>
         <ul>
-          <li>PLC industrial control systems with CODESYS for robotics</li>
-          <li>Modbus, CAN, Ethernet/IP &#8212; motor performance <strong>+15%</strong></li>
+          <li data-i18n="exp3.b1">PLC industrial control systems with CODESYS for robotics</li>
+          <li data-i18n="exp3.b2">Modbus, CAN, Ethernet/IP &#8212; motor performance <strong>+15%</strong></li>
         </ul>
       </div></div>
     </div>
@@ -284,24 +285,25 @@ body.light .tl-dot{border-color:var(--bg)}
 
 <section id="research">
   <div class="container">
-    <h2 class="sec-title fade-in">Research &amp; <span>Publications</span></h2>
+    <h2 class="sec-title fade-in" data-i18n="res.title">Research &amp; <span>Publications</span></h2>
     <div class="grid-3">
       <div class="proj-card fade-in" style="border-color:rgba(0,229,255,.2)">
-        <span class="tag tag-blue">IEEE TNNLS (Under Review)</span>
-        <h3>NVFP4-DiT: 4-Bit Audio-Guided Video Diffusion</h3>
-        <p>First author. 4x memory reduction with FP4 quantization for multimodal diffusion transformers.</p>
+        <span class="tag tag-blue" data-i18n="res1.tag">IEEE TNNLS (Under Review)</span>
+        <h3 data-i18n="res1.h">NVFP4-DiT: 4-Bit Audio-Guided Video Diffusion</h3>
+        <p data-i18n="res1.p">First author. 4x memory reduction with FP4 quantization for multimodal diffusion transformers.</p>
         <a href="https://github.com/theraihanrakibb/NVFP4-DiT" class="proj-link">GitHub &#8594;</a>
       </div>
       <div class="proj-card fade-in">
-        <span class="tag tag-purple">M.Eng. Thesis</span>
-        <h3>Multimodal Deepfake Detection</h3>
-        <p>EfficientNet+FFT + MFCC + Transformer with attention fusion. 70-page thesis on WildDeepfake.</p>
+        <span class="tag tag-purple" data-i18n="res2.tag">M.Eng. Thesis</span>
+        <h3 data-i18n="res2.h">Multimodal Deepfake Detection</h3>
+        <p data-i18n="res2.p">EfficientNet+FFT + MFCC + Transformer with attention fusion. 70-page thesis on WildDeepfake.</p>
         <a href="https://github.com/theraihanrakibb/DeepfakeAudioVisualTemporalDetector" class="proj-link">GitHub &#8594;</a>
       </div>
       <div class="proj-card fade-in">
-        <span class="tag tag-purple">B.Eng. Thesis</span>
-        <h3>Distributed Confidential Query</h3>
-        <p>Apache Spark + CKKS homomorphic encryption. 95% privacy preservation, 20% performance gain.</p>
+        <span class="tag tag-purple" data-i18n="res3.tag">B.Eng. Thesis</span>
+        <h3 data-i18n="res3.h">Distributed Confidential Query</h3>
+        <p data-i18n="res3.p">Apache Spark + CKKS homomorphic encryption. 95% privacy preservation, 20% performance gain.</p>
+        <a href="https://github.com/theraihanrakibb/Online-Portfolio/raw/main/assets/BS_Thesis_English.pdf" target="_blank" class="proj-link" data-i18n="res3.link">Thesis PDF &#8594;</a>
       </div>
     </div>
   </div>
@@ -309,18 +311,18 @@ body.light .tl-dot{border-color:var(--bg)}
 
 <section id="oss">
   <div class="container">
-    <h2 class="sec-title fade-in">Open-Source <span>Contributions</span></h2>
+    <h2 class="sec-title fade-in" data-i18n="oss.title">Open-Source <span>Contributions</span></h2>
     <div class="grid-3">
       <div class="proj-card fade-in" style="border-color:rgba(0,229,255,.2)">
-        <span class="tag tag-blue">SGLang &#8226; Open PR</span>
-        <h3>KV-cache eviction unit tests</h3>
-        <p>Added unit tests for KV-cache eviction priority strategies in <strong>sgl-project/sglang</strong> (PR #31121) &mdash; directly relevant to production LLM serving.</p>
+        <span class="tag tag-blue" data-i18n="oss1.tag">SGLang &#8226; Open PR</span>
+        <h3 data-i18n="oss1.h">KV-cache eviction unit tests</h3>
+        <p data-i18n="oss1.p">Added unit tests for KV-cache eviction priority strategies in <strong>sgl-project/sglang</strong> (PR #31121) &mdash; directly relevant to production LLM serving.</p>
         <a href="https://github.com/sgl-project/sglang/pull/31121" target="_blank" class="proj-link">View PR &#8594;</a>
       </div>
       <div class="proj-card fade-in">
-        <span class="tag tag-purple">Active OSS Contributor</span>
-        <h3>Upstream &amp; community</h3>
-        <p>Opened PRs and doc/typo fixes across multiple open-source projects (SGLang, SDKs, developer tooling), building a consistent public contribution history.</p>
+        <span class="tag tag-purple" data-i18n="oss2.tag">Active OSS Contributor</span>
+        <h3 data-i18n="oss2.h">Upstream &amp; community</h3>
+        <p data-i18n="oss2.p">Opened PRs and doc/typo fixes across multiple open-source projects (SGLang, SDKs, developer tooling), building a consistent public contribution history.</p>
         <a href="https://github.com/theraihanrakibb?tab=overview" target="_blank" class="proj-link">GitHub &#8594;</a>
       </div>
     </div>
@@ -329,16 +331,16 @@ body.light .tl-dot{border-color:var(--bg)}
 
 <section id="projects" style="background:var(--bg2)">
   <div class="container">
-    <h2 class="sec-title fade-in">Featured <span>Projects</span></h2>
+    <h2 class="sec-title fade-in" data-i18n="proj.title">Featured <span>Projects</span></h2>
     <div class="filter-chips" id="projFilters">
-      <button class="chip active" data-filter="all">All</button>
-      <button class="chip" data-filter="Serving">Serving</button>
-      <button class="chip" data-filter="Observability">Observability</button>
-      <button class="chip" data-filter="Training">Training</button>
-      <button class="chip" data-filter="Low-Precision">Low-Precision</button>
-      <button class="chip" data-filter="RAG">RAG</button>
-      <button class="chip" data-filter="MLOps">MLOps</button>
-      <button class="chip" data-filter="Systems">Systems</button>
+      <button class="chip active" data-filter="all" data-i18n="chip.all">All</button>
+      <button class="chip" data-filter="Serving" data-i18n="chip.serving">Serving</button>
+      <button class="chip" data-filter="Observability" data-i18n="chip.observability">Observability</button>
+      <button class="chip" data-filter="Training" data-i18n="chip.training">Training</button>
+      <button class="chip" data-filter="Low-Precision" data-i18n="chip.lowprec">Low-Precision</button>
+      <button class="chip" data-filter="RAG" data-i18n="chip.rag">RAG</button>
+      <button class="chip" data-filter="MLOps" data-i18n="chip.mlops">MLOps</button>
+      <button class="chip" data-filter="Systems" data-i18n="chip.systems">Systems</button>
     </div>
     <div class="grid-3" id="projGrid"></div>
   </div>
@@ -346,66 +348,65 @@ body.light .tl-dot{border-color:var(--bg)}
 
 <section id="skills">
   <div class="container">
-    <h2 class="sec-title fade-in">Technical <span>Skills</span></h2>
+    <h2 class="sec-title fade-in" data-i18n="skills.title">Technical <span>Skills</span></h2>
     <div class="skills-grid">
-      <div class="skill-cat fade-in"><h3>Languages</h3><div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">C++</span><span class="skill-tag">Java</span><span class="skill-tag">SQL</span><span class="skill-tag">Bash</span></div></div>
-      <div class="skill-cat fade-in"><h3>LLM Systems</h3><div class="skill-tags"><span class="skill-tag">SGLang</span><span class="skill-tag">vLLM</span><span class="skill-tag">TensorRT-LLM</span><span class="skill-tag">KV Cache</span><span class="skill-tag">PD Disagg</span><span class="skill-tag">Mooncake RDMA</span><span class="skill-tag">etcd</span></div></div>
-      <div class="skill-cat fade-in"><h3>GPU &amp; ML</h3><div class="skill-tags"><span class="skill-tag">CUDA</span><span class="skill-tag">Triton</span><span class="skill-tag">FlashAttn</span><span class="skill-tag">FP8/FP4</span><span class="skill-tag">GEMM</span><span class="skill-tag">Nsight</span><span class="skill-tag">PyTorch</span></div></div>
-      <div class="skill-cat fade-in"><h3>Infra</h3><div class="skill-tags"><span class="skill-tag">Linux</span><span class="skill-tag">Docker</span><span class="skill-tag">K8s</span><span class="skill-tag">Slurm</span><span class="skill-tag">RDMA</span><span class="skill-tag">Prometheus</span><span class="skill-tag">Grafana</span><span class="skill-tag">CI/CD</span></div></div>
-      <div class="skill-cat fade-in"><h3>Web &amp; Tools</h3><div class="skill-tags"><span class="skill-tag">React</span><span class="skill-tag">REST API</span><span class="skill-tag">Node.js</span><span class="skill-tag">Git</span><span class="skill-tag">CODESYS</span><span class="skill-tag">Modbus</span><span class="skill-tag">CAN</span><span class="skill-tag">Ethernet/IP</span></div></div>
-      <div class="skill-cat fade-in"><h3>Research</h3><div class="skill-tags"><span class="skill-tag">Deepfake Detection</span><span class="skill-tag">Diffusion Models</span><span class="skill-tag">Homomorphic Encryption</span><span class="skill-tag">Spark</span><span class="skill-tag">Nsight</span><span class="skill-tag">Grad-CAM</span></div></div>
+      <div class="skill-cat fade-in"><h3 data-i18n="cat.lang">Languages</h3><div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">C++</span><span class="skill-tag">Java</span><span class="skill-tag">SQL</span><span class="skill-tag">Bash</span></div></div>
+      <div class="skill-cat fade-in"><h3 data-i18n="cat.llm">LLM Systems</h3><div class="skill-tags"><span class="skill-tag">SGLang</span><span class="skill-tag">vLLM</span><span class="skill-tag">TensorRT-LLM</span><span class="skill-tag">KV Cache</span><span class="skill-tag">PD Disagg</span><span class="skill-tag">Mooncake RDMA</span><span class="skill-tag">etcd</span></div></div>
+      <div class="skill-cat fade-in"><h3 data-i18n="cat.gpu">GPU &amp; ML</h3><div class="skill-tags"><span class="skill-tag">CUDA</span><span class="skill-tag">Triton</span><span class="skill-tag">FlashAttn</span><span class="skill-tag">FP8/FP4</span><span class="skill-tag">GEMM</span><span class="skill-tag">Nsight</span><span class="skill-tag">PyTorch</span></div></div>
+      <div class="skill-cat fade-in"><h3 data-i18n="cat.infra">Infra</h3><div class="skill-tags"><span class="skill-tag">Linux</span><span class="skill-tag">Docker</span><span class="skill-tag">K8s</span><span class="skill-tag">Slurm</span><span class="skill-tag">RDMA</span><span class="skill-tag">Prometheus</span><span class="skill-tag">Grafana</span><span class="skill-tag">CI/CD</span></div></div>
+      <div class="skill-cat fade-in"><h3 data-i18n="cat.web">Web &amp; Tools</h3><div class="skill-tags"><span class="skill-tag">React</span><span class="skill-tag">REST API</span><span class="skill-tag">Node.js</span><span class="skill-tag">Git</span><span class="skill-tag">CODESYS</span><span class="skill-tag">Modbus</span><span class="skill-tag">CAN</span><span class="skill-tag">Ethernet/IP</span></div></div>
+      <div class="skill-cat fade-in"><h3 data-i18n="cat.research">Research</h3><div class="skill-tags"><span class="skill-tag">Deepfake Detection</span><span class="skill-tag">Diffusion Models</span><span class="skill-tag">Homomorphic Encryption</span><span class="skill-tag">Spark</span><span class="skill-tag">Nsight</span><span class="skill-tag">Grad-CAM</span></div></div>
     </div>
     <div class="edu-grid">
-      <div class="edu-card fade-in"><h4>M.Eng. Software Engineering</h4><p>NWPU (985/211)</p><p class="edu-date">Sep 2024 &#8211; Mar 2027 &#8226; GPA 88/100 (Top 1%)</p></div>
-      <div class="edu-card fade-in"><h4>B.Eng. Computer Science</h4><p>NWPU (985/211)</p><p class="edu-date">Sep 2020 &#8211; Jul 2024 &#8226; GPA 85/100 (Top 1%)</p></div>
+      <div class="edu-card fade-in"><h4 data-i18n="edu.me.h">M.Eng. Software Engineering</h4><p data-i18n="edu.me.p">NWPU (985/211)</p><p class="edu-date" data-i18n="edu.me.d">Sep 2024 &#8211; Mar 2027 &#8226; GPA 88/100 (Top 1%)</p></div>
+      <div class="edu-card fade-in"><h4 data-i18n="edu.be.h">B.Eng. Computer Science</h4><p data-i18n="edu.be.p">NWPU (985/211)</p><p class="edu-date" data-i18n="edu.be.d">Sep 2020 &#8211; Jul 2024 &#8226; GPA 85/100 (Top 1%)</p></div>
     </div>
     <div class="honor-tags fade-in">
-      <span class="honor-tag">&#127942; Chinese Gov Scholarship</span>
-      <span class="honor-tag">&#127942; Presidential Scholarship</span>
-      <span class="honor-tag">&#127942; Best Thesis Award</span>
-      <span class="honor-tag">&#127942; Outstanding Graduate</span>
-      <span class="honor-tag">&#127942; Hackathon Winner</span>
+      <span class="honor-tag" data-i18n="honor.gov">&#127942; Chinese Gov Scholarship</span>
+      <span class="honor-tag" data-i18n="honor.pres">&#127942; Presidential Scholarship</span>
+      <span class="honor-tag" data-i18n="honor.thesis">&#127942; Best Thesis Award</span>
+      <span class="honor-tag" data-i18n="honor.out">&#127942; Outstanding Graduate</span>
+      <span class="honor-tag" data-i18n="honor.hack">&#127942; Hackathon Winner</span>
     </div>
   </div>
 </section>
 
-
 <section id="interests">
   <div class="container">
-    <h2 class="sec-title fade-in">Research <span>Interests</span></h2>
+    <h2 class="sec-title fade-in" data-i18n="int.title">Research <span>Interests</span></h2>
     <div class="about-grid">
       <div class="card fade-in">
         <div class="card-icon">&#129504;</div>
-        <h3>AI Infrastructure</h3>
-        <p>LLM inference systems, KV-cache architecture, PD disaggregation, RDMA-based distributed serving on multi-GPU clusters.</p>
+        <h3 data-i18n="int1.h">AI Infrastructure</h3>
+        <p data-i18n="int1.p">LLM inference systems, KV-cache architecture, PD disaggregation, RDMA-based distributed serving on multi-GPU clusters.</p>
       </div>
       <div class="card fade-in">
         <div class="card-icon">&#127909;</div>
-        <h3>Multimodal AI</h3>
-        <p>Visual + audio + temporal fusion, deepfake detection, audio-guided video generation, cross-modal attention mechanisms.</p>
+        <h3 data-i18n="int2.h">Multimodal AI</h3>
+        <p data-i18n="int2.p">Visual + audio + temporal fusion, deepfake detection, audio-guided video generation, cross-modal attention mechanisms.</p>
       </div>
       <div class="card fade-in">
         <div class="card-icon">&#9889;</div>
-        <h3>LLM Optimization</h3>
-        <p>Low-precision quantization (FP8/FP4), CUDA/Triton kernel optimization, FlashAttention, GEMM acceleration for inference.</p>
+        <h3 data-i18n="int3.h">LLM Optimization</h3>
+        <p data-i18n="int3.p">Low-precision quantization (FP8/FP4), CUDA/Triton kernel optimization, FlashAttention, GEMM acceleration for inference.</p>
       </div>
     </div>
     <div style="text-align:center;margin-top:32px" class="fade-in">
-      <p style="color:var(--muted);font-size:.95rem">Open to collaboration on LLM serving, multimodal AI, and GPU optimization. Reach out via email or LinkedIn.</p>
+      <p style="color:var(--muted);font-size:.95rem" data-i18n="int.foot">Open to collaboration on LLM serving, multimodal AI, and GPU optimization. Reach out via email or LinkedIn.</p>
     </div>
   </div>
 </section>
 
 <section id="contact" style="background:var(--bg2)">
   <div class="container">
-    <h2 class="sec-title fade-in">Get in <span>Touch</span></h2>
+    <h2 class="sec-title fade-in" data-i18n="contact.title">Get in <span>Touch</span></h2>
     <div class="contact-grid">
-      <a href="mailto:raihanrakib.143@gmail.com" class="contact-card fade-in"><div class="contact-ico">&#9993;</div><h3>Email</h3><p>raihanrakib.143@gmail.com</p></a>
-      <a href="https://linkedin.com/in/theraihanrakib" target="_blank" class="contact-card fade-in"><div class="contact-ico">in</div><h3>LinkedIn</h3><p>/in/theraihanrakib</p></a>
-      <a href="https://github.com/theraihanrakibb" target="_blank" class="contact-card fade-in"><div class="contact-ico">&#128187;</div><h3>GitHub</h3><p>/theraihanrakibb</p></a>
-      <a href="tel:+8617722362949" class="contact-card fade-in"><div class="contact-ico">&#128222;</div><h3>Phone</h3><p>+86-17722362949</p></a>
-      <a href="https://x.com/theraihanrakib" target="_blank" class="contact-card fade-in"><div class="contact-ico">X</div><h3>Twitter / X</h3><p>@theraihanrakib</p></a>
-      <a href="https://instagram.com/theraihanrakib" target="_blank" class="contact-card fade-in"><div class="contact-ico">&#128247;</div><h3>Instagram</h3><p>@theraihanrakib</p></a>
+      <a href="mailto:raihanrakib.143@gmail.com" class="contact-card fade-in"><div class="contact-ico">&#9993;</div><h3 data-i18n="contact.email">Email</h3><p>raihanrakib.143@gmail.com</p></a>
+      <a href="https://linkedin.com/in/theraihanrakib" target="_blank" class="contact-card fade-in"><div class="contact-ico">in</div><h3 data-i18n="contact.linkedin">LinkedIn</h3><p>/in/theraihanrakib</p></a>
+      <a href="https://github.com/theraihanrakibb" target="_blank" class="contact-card fade-in"><div class="contact-ico">&#128187;</div><h3 data-i18n="contact.github">GitHub</h3><p>/theraihanrakibb</p></a>
+      <a href="tel:+8617722362949" class="contact-card fade-in"><div class="contact-ico">&#128222;</div><h3 data-i18n="contact.phone">Phone</h3><p>+86-17722362949</p></a>
+      <a href="https://x.com/theraihanrakib" target="_blank" class="contact-card fade-in"><div class="contact-ico">X</div><h3 data-i18n="contact.x">Twitter / X</h3><p>@theraihanrakib</p></a>
+      <a href="https://instagram.com/theraihanrakib" target="_blank" class="contact-card fade-in"><div class="contact-ico">&#128247;</div><h3 data-i18n="contact.insta">Instagram</h3><p>@theraihanrakib</p></a>
     </div>
   </div>
 </section>
@@ -413,9 +414,144 @@ body.light .tl-dot{border-color:var(--bg)}
 <footer><p>&copy; <span id="year">2026</span> MD RAKIBUL ISLAM RAIHAN</p></footer>
 
 <script>
+// i18n dictionary
+const I18N={
+  en:{
+    'nav.home':'Home','nav.about':'About','nav.exp':'Experience','nav.research':'Research','nav.projects':'Projects','nav.skills':'Skills','nav.contact':'Contact',
+    'avail':'🎓 Open to 2027 New Grad Roles · China &amp; Hong Kong',
+    'heroTag':'LLM Inference Systems &#8226; GPU Optimization &#8226; Multimodal AI Research',
+    'btn.touch':'Get in Touch','btn.projects':'View Projects','btn.resume':'Download Resume',
+    'badge.nwpu':'NWPU Top 1%','badge.scholar':'Chinese Gov Scholarship','badge.ieee':'IEEE TNNLS Under Review',
+    'stat.kv':'KV-cache hit rate','stat.ttft':'TTFT reduction (4&times;A800 PD)','stat.mem':'Memory (FP4 / NVFP4-DiT)','stat.repos':'Production OSS repos',
+    'about.title':'About <span>Me</span>','about.ai.h':'AI Infrastructure','about.ai.p':'Designed 3-tier KV-cache (GPU&#8594;CPU&#8594;SSD) with SGLang + RDMA achieving <strong>92.27% hit rate</strong> and <strong>8.3x TTFT reduction</strong> on 4xA800.',
+    'about.research.h':'Research','about.research.p':'First author IEEE TNNLS paper on <strong>NVFP4-DiT</strong> &#8212; 4-bit quantization for video diffusion achieving <strong>4x memory reduction</strong>.',
+    'about.edu.h':'Education','about.edu.p':'M.Eng. Software Engineering @ NWPU (985/211), Top 1%, GPA 88/100. Chinese Government Scholarship.',
+    'exp.title':'Experience',
+    'exp1.h':'AI Infrastructure Engineer Intern','exp1.c':'InfiX.ai &#8226; Shenzhen &#8226; Apr 2026 &#8211; Jun 2026',
+    'exp1.b1':'Designed 3-tier KV-cache (GPU HBM &#8594; CPU DRAM &#8594; SSD) with SGLang + Mooncake RDMA &#8212; <strong>92.27% hit rate</strong>, <strong>8.3x TTFT reduction</strong> (55s&#8594;6.7s)',
+    'exp1.b2':'Patched SGLang source (kvcacheio.py, hiradix_cache.py) for hybrid-attention Qwen on 4xA800',
+    'exp1.b3':'Built PD-disaggregated serving with RDMA KV sharing &#8212; concurrency <strong>192&#8594;256</strong>',
+    'exp1.b4':'Profiled CUDA/Triton with Nsight Systems, FP8 optimization',
+    'exp1.b5':'Resolved 12+ production issues (RDMA, etcd, networking)',
+    'exp2.h':'Software Engineer Intern (AI Agent)','exp2.c':'Hong Kong Amram Group &#8226; Shenzhen &#8226; Jun 2025 &#8211; Sep 2025',
+    'exp2.b1':'Full-stack apps with React, REST APIs, backend automation',
+    'exp2.b2':'AI-agent workflow automation improving efficiency by <strong>25%</strong>',
+    'exp3.h':'Electrical Software Engineer Intern','exp3.c':'Shaanxi Longong &#8226; Xi&#8217;an &#8226; Feb 2025 &#8211; Apr 2025',
+    'exp3.b1':'PLC industrial control systems with CODESYS for robotics',
+    'exp3.b2':'Modbus, CAN, Ethernet/IP &#8212; motor performance <strong>+15%</strong>',
+    'res.title':'Research &amp; <span>Publications</span>',
+    'res1.tag':'IEEE TNNLS (Under Review)','res1.h':'NVFP4-DiT: 4-Bit Audio-Guided Video Diffusion','res1.p':'First author. 4x memory reduction with FP4 quantization for multimodal diffusion transformers.',
+    'res2.tag':'M.Eng. Thesis','res2.h':'Multimodal Deepfake Detection','res2.p':'EfficientNet+FFT + MFCC + Transformer with attention fusion. 70-page thesis on WildDeepfake.',
+    'res3.tag':'B.Eng. Thesis','res3.h':'Distributed Confidential Query','res3.p':'Apache Spark + CKKS homomorphic encryption. 95% privacy preservation, 20% performance gain.','res3.link':'Thesis PDF &#8594;',
+    'oss.title':'Open-Source <span>Contributions</span>',
+    'oss1.tag':'SGLang &#8226; Open PR','oss1.h':'KV-cache eviction unit tests','oss1.p':'Added unit tests for KV-cache eviction priority strategies in <strong>sgl-project/sglang</strong> (PR #31121) &mdash; directly relevant to production LLM serving.',
+    'oss2.tag':'Active OSS Contributor','oss2.h':'Upstream &amp; community','oss2.p':'Opened PRs and doc/typo fixes across multiple open-source projects (SGLang, SDKs, developer tooling), building a consistent public contribution history.',
+    'proj.title':'Featured <span>Projects</span>',
+    'chip.all':'All','chip.serving':'Serving','chip.observability':'Observability','chip.training':'Training','chip.lowprec':'Low-Precision','chip.rag':'RAG','chip.mlops':'MLOps','chip.systems':'Systems',
+    'skills.title':'Technical <span>Skills</span>',
+    'cat.lang':'Languages','cat.llm':'LLM Systems','cat.gpu':'GPU &amp; ML','cat.infra':'Infra','cat.web':'Web &amp; Tools','cat.research':'Research',
+    'edu.me.h':'M.Eng. Software Engineering','edu.me.p':'NWPU (985/211)','edu.me.d':'Sep 2024 &#8211; Mar 2027 &#8226; GPA 88/100 (Top 1%)',
+    'edu.be.h':'B.Eng. Computer Science','edu.be.p':'NWPU (985/211)','edu.be.d':'Sep 2020 &#8211; Jul 2024 &#8226; GPA 85/100 (Top 1%)',
+    'honor.gov':'&#127942; Chinese Gov Scholarship','honor.pres':'&#127942; Presidential Scholarship','honor.thesis':'&#127942; Best Thesis Award','honor.out':'&#127942; Outstanding Graduate','honor.hack':'&#127942; Hackathon Winner',
+    'int.title':'Research <span>Interests</span>',
+    'int1.h':'AI Infrastructure','int1.p':'LLM inference systems, KV-cache architecture, PD disaggregation, RDMA-based distributed serving on multi-GPU clusters.',
+    'int2.h':'Multimodal AI','int2.p':'Visual + audio + temporal fusion, deepfake detection, audio-guided video generation, cross-modal attention mechanisms.',
+    'int3.h':'LLM Optimization','int3.p':'Low-precision quantization (FP8/FP4), CUDA/Triton kernel optimization, FlashAttention, GEMM acceleration for inference.',
+    'int.foot':'Open to collaboration on LLM serving, multimodal AI, and GPU optimization. Reach out via email or LinkedIn.',
+    'contact.title':'Get in <span>Touch</span>','contact.email':'Email','contact.linkedin':'LinkedIn','contact.github':'GitHub','contact.phone':'Phone','contact.x':'Twitter / X','contact.insta':'Instagram'
+  },
+  zh:{
+    'nav.home':'首页','nav.about':'关于','nav.exp':'经历','nav.research':'研究','nav.projects':'项目','nav.skills':'技能','nav.contact':'联系',
+    'avail':'🎓 2027 应届求职 · 中国 &amp; 香港',
+    'heroTag':'大模型推理系统 &#8226; GPU 优化 &#8226; 多模态 AI 研究',
+    'btn.touch':'联系我','btn.projects':'查看项目','btn.resume':'下载简历',
+    'badge.nwpu':'西北工业大学 前 1%','badge.scholar':'中国政府奖学金','badge.ieee':'IEEE TNNLS 审稿中',
+    'stat.kv':'KV 缓存命中率','stat.ttft':'TTFT 降低 (4&times;A800 PD)','stat.mem':'显存 (FP4 / NVFP4-DiT)','stat.repos':'生产级开源仓库',
+    'about.title':'关于<span>我</span>','about.ai.h':'AI 基础设施','about.ai.p':'基于 SGLang + RDMA 设计三级 KV 缓存（GPU&#8594;CPU&#8594;SSD），在 4×A800 上实现 <strong>92.27% 命中率</strong> 与 <strong>8.3× TTFT 降低</strong>。',
+    'about.research.h':'研究','about.research.p':'<strong>NVFP4-DiT</strong> 一作 IEEE TNNLS 论文——面向视频扩散的 4-bit 量化，实现 <strong>4× 显存降低</strong>。',
+    'about.edu.h':'教育','about.edu.p':'西北工业大学（985/211）软件工程硕士，前 1%，GPA 88/100。中国政府奖学金。',
+    'exp.title':'经历',
+    'exp1.h':'AI 基础设施工程师（实习）','exp1.c':'InfiX.ai · 深圳 · 2026年4月 – 6月',
+    'exp1.b1':'基于 SGLang + Mooncake RDMA 设计三级 KV 缓存（GPU HBM&#8594;CPU DRAM&#8594;SSD）——<strong>92.27% 命中率</strong>，<strong>8.3× TTFT 降低</strong>（55s&#8594;6.7s）',
+    'exp1.b2':'为 4×A800 上的混合注意力 Qwen 修补 SGLang 源码（kvcacheio.py、hiradix_cache.py）',
+    'exp1.b3':'构建 PD 分离的 RDMA KV 共享服务——并发 <strong>192&#8594;256</strong>',
+    'exp1.b4':'使用 Nsight Systems 分析 CUDA/Triton，进行 FP8 优化',
+    'exp1.b5':'解决 12+ 生产问题（RDMA、etcd、网络）',
+    'exp2.h':'软件工程师（AI Agent）实习','exp2.c':'香港 Amram Group · 深圳 · 2025年6月 – 9月',
+    'exp2.b1':'使用 React、REST API、后端自动化开发全栈应用',
+    'exp2.b2':'AI Agent 工作流自动化，效率提升 <strong>25%</strong>',
+    'exp3.h':'电气软件工程师实习','exp3.c':'陕西隆工 · 西安 · 2025年2月 – 4月',
+    'exp3.b1':'基于 CODESYS 的 PLC 工业机器人控制系统',
+    'exp3.b2':'Modbus、CAN、Ethernet/IP——电机性能 <strong>+15%</strong>',
+    'res.title':'研究<span>与发表</span>',
+    'res1.tag':'IEEE TNNLS（审稿中）','res1.h':'NVFP4-DiT：4-bit 音频引导视频扩散','res1.p':'一作。面向多模态扩散 Transformer 的 FP4 量化，显存降低 4×。',
+    'res2.tag':'硕士论文','res2.h':'多模态深度伪造检测','res2.p':'EfficientNet+FFT+MFCC+Transformer 注意力融合。WildDeepfake 上 70 页论文。',
+    'res3.tag':'本科论文','res3.h':'分布式机密查询','res3.p':'Apache Spark + CKKS 同态加密。95% 隐私保护，20% 性能提升。','res3.link':'论文 PDF &#8594;',
+    'oss.title':'开源<span>贡献</span>',
+    'oss1.tag':'SGLang · 开放 PR','oss1.h':'KV 缓存淘汰单元测试','oss1.p':'为 <strong>sgl-project/sglang</strong>（PR #31121）新增 KV 缓存淘汰优先级策略单元测试——与生产级大模型推理服务直接相关。',
+    'oss2.tag':'活跃开源贡献者','oss2.h':'上游与社区','oss2.p':'在多个开源项目（SGLang、SDK、开发工具）提交 PR 与文档/错别字修复，建立持续的公开贡献记录。',
+    'proj.title':'精选<span>项目</span>',
+    'chip.all':'全部','chip.serving':'推理服务','chip.observability':'可观测性','chip.training':'训练','chip.lowprec':'低精度','chip.rag':'检索增强','chip.mlops':'模型运维','chip.systems':'系统',
+    'skills.title':'技术<span>技能</span>',
+    'cat.lang':'编程语言','cat.llm':'大模型系统','cat.gpu':'GPU 与机器学习','cat.infra':'基础设施','cat.web':'Web 与工具','cat.research':'研究',
+    'edu.me.h':'软件工程硕士','edu.me.p':'西北工业大学（985/211）','edu.me.d':'2024年9月 – 2027年3月 · GPA 88/100（前 1%）',
+    'edu.be.h':'计算机科学学士','edu.be.p':'西北工业大学（985/211）','edu.be.d':'2020年9月 – 2024年7月 · GPA 85/100（前 1%）',
+    'honor.gov':'🏆 中国政府奖学金','honor.pres':'🏆 校长奖学金','honor.thesis':'🏆 最佳论文奖','honor.out':'🏆 优秀毕业生','honor.hack':'🏆 黑客松冠军',
+    'int.title':'研究<span>兴趣</span>',
+    'int1.h':'AI 基础设施','int1.p':'大模型推理系统、KV 缓存架构、PD 分离、基于 RDMA 的多 GPU 分布式服务。',
+    'int2.h':'多模态 AI','int2.p':'视觉+音频+时序融合、深度伪造检测、音频引导视频生成、跨模态注意力机制。',
+    'int3.h':'大模型优化','int3.p':'低精度量化（FP8/FP4）、CUDA/Triton 算子优化、FlashAttention、面向推理的 GEMM 加速。',
+    'int.foot':'欢迎就大模型推理、多模态 AI 与 GPU 优化展开合作，可通过邮件或领英联系。',
+    'contact.title':'<span>联系</span>我','contact.email':'邮箱','contact.linkedin':'领英','contact.github':'GitHub','contact.phone':'电话','contact.x':'推特 / X','contact.insta':'Instagram'
+  }
+};
+
+// Typing roles (bilingual)
+const rolesEn=['AI Infrastructure Engineer','LLM Inference Specialist','GPU Optimization Engineer','Multimodal AI Researcher'];
+const rolesZh=['AI 基础设施工程师','大模型推理专家','GPU 优化工程师','多模态 AI 研究员'];
+let roles=rolesEn;
+
+// Project portfolio (10 AI-infra repos + Compiler-C), with zh fields
+const areaMap={
+  en:{Serving:'Serving',Observability:'Observability',Training:'Training','Low-Precision':'Low-Precision',RAG:'RAG',MLOps:'MLOps',Systems:'Systems'},
+  zh:{Serving:'推理服务',Observability:'可观测性',Training:'训练','Low-Precision':'低精度',RAG:'检索增强',MLOps:'模型运维',Systems:'系统'}
+};
+const projects=[
+  {n:'llm-gateway',area:'Serving',d:'OpenAI-compatible proxy: per-key rate limits, cost caps, response caching, provider fallback.',dz:'兼容 OpenAI 的代理：按密钥限流、成本上限、响应缓存、多供应商兜底。',t:['FastAPI','Rate Limit','Cost Cap','Cache','Fallback'],u:'https://github.com/theraihanrakibb/llm-gateway',w:'Production-grade multi-tenant LLM traffic control.',wz:'生产级多租户大模型流量管控。'},
+  {n:'mini-serve',area:'Serving',d:'Inference server: dynamic batching, SSE streaming, and Prometheus metrics.',dz:'推理服务器：动态批处理、SSE 流式输出与 Prometheus 指标。',t:['FastAPI','Batching','SSE','Metrics'],u:'https://github.com/theraihanrakibb/mini-serve',w:'Low-latency serving with observability built in.',wz:'内建可观测性的低延迟推理服务。'},
+  {n:'kv-cache-sim',area:'Serving',d:'KV-cache eviction + prefill/decode disaggregation simulator reporting TTFT/TPOT.',dz:'KV 缓存淘汰 + prefill/decode 分离模拟器，输出 TTFT/TPOT。',t:['KV Cache','PD Disagg','Simulator'],u:'https://github.com/theraihanrakibb/kv-cache-sim',w:'Models the exact serving trade-offs I tune in production.',wz:'对我生产中调优的推理权衡进行建模。'},
+  {n:'llm-bench',area:'Serving',d:'LLM benchmark/eval harness: TTFT, TPOT, throughput, and a cost model.',dz:'大模型评测框架：TTFT、TPOT、吞吐与成本模型。',t:['Benchmark','Eval','Cost Model'],u:'https://github.com/theraihanrakibb/llm-bench',w:'Quantifies serving performance end-to-end.',wz:'端到端量化推理性能。'},
+  {n:'gpu-exporter',area:'Observability',d:'NVIDIA GPU Prometheus exporter + Grafana dashboard.',dz:'NVIDIA GPU Prometheus 导出器 + Grafana 面板。',t:['Prometheus','Grafana','NVML','Docker'],u:'https://github.com/theraihanrakibb/gpu-exporter',w:'Cluster-wide GPU utilisation and health visibility.',wz:'集群级 GPU 利用率与健康可视化。'},
+  {n:'llmoops-trace',area:'Observability',d:'OpenTelemetry LLM tracing collector + Grafana dashboard.',dz:'OpenTelemetry 大模型链路追踪采集器 + Grafana 面板。',t:['OTel','Tracing','Grafana'],u:'https://github.com/theraihanrakibb/llmoops-trace',w:'Distributed request/cost tracing for LLM apps.',wz:'面向大模型应用的分布式请求/成本追踪。'},
+  {n:'train-launcher',area:'Training',d:'Fault-tolerant multi-node PyTorch training launcher with auto-retry.',dz:'容错的多节点 PyTorch 训练启动器，支持自动重试。',t:['PyTorch','Slurm','K8s','Retry'],u:'https://github.com/theraihanrakibb/train-launcher',w:'Resilient distributed training orchestration.',wz:'弹性的分布式训练编排。'},
+  {n:'quant-playground',area:'Low-Precision',d:'FP8/FP4/INT8/INT4 bit-packing + a numpy MLP quantization demo.',dz:'FP8/FP4/INT8/INT4 位打包 + numpy MLP 量化演示。',t:['FP8','FP4','Quantization'],u:'https://github.com/theraihanrakibb/quant-playground',w:'Hands-on low-precision inference, the core of NVFP4-DiT.',wz:'动手实践低精度推理，即 NVFP4-DiT 的核心。'},
+  {n:'model-registry',area:'MLOps',d:'Content-addressed model/dataset registry (mini-MLflow) with aliases.',dz:'内容寻址的模型/数据集注册表（mini-MLflow），支持别名。',t:['Registry','Artifacts','Aliases'],u:'https://github.com/theraihanrakibb/model-registry',w:'Reproducible model versioning and promotion.',wz:'可复现的模型版本管理与晋级。'},
+  {n:'rag-pipeline',area:'RAG',d:'Offline RAG toolkit: ingest → chunk → embed → ANN search → rerank.',dz:'离线 RAG 工具链：入库 → 切分 → 嵌入 → ANN 检索 → 重排。',t:['RAG','Embedding','ANN','Rerank'],u:'https://github.com/theraihanrakibb/rag-pipeline',w:'Retrieval pipeline usable beside serving stacks.',wz:'可配合推理栈使用的检索流水线。'},
+  {n:'Compiler-C',area:'Systems',d:'Complete C compiler front-end: lexer, parser, AST, semantic analysis, codegen.',dz:'完整的 C 编译器前端：词法、语法、AST、语义分析、代码生成。',t:['Compiler','Yacc','Lex','Codegen'],u:'https://github.com/theraihanrakibb/Compiler-C',w:'Systems fundamentals behind fast runtimes.',wz:'高性能运行时背后的系统底层基础。'}
+];
+
+let curLang='en';
+let currentFilter='all';
+
+// Apply language
+function setLang(lang){
+  curLang=lang;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.dataset.i18n;
+    if(I18N[lang][k]===undefined) return;
+    if(el.classList.contains('chip')) el.textContent=I18N[lang][k];
+    else el.innerHTML=I18N[lang][k];
+  });
+  roles = lang==='zh'?rolesZh:rolesEn;
+  document.getElementById('langBtn').textContent = lang==='en'?'中':'EN';
+  try{localStorage.setItem('lang',lang);}catch(e){}
+  renderProjects(currentFilter);
+}
+
 // Typing
-const roles=['AI Infrastructure Engineer','LLM Inference Specialist','GPU Optimization Engineer','Multimodal AI Researcher'];
-let ri=0,ci=0,del=false,t=document.getElementById('typed');
+const t=document.getElementById('typed');
+let ri=0,ci=0,del=false;
 function tick(){const c=roles[ri];if(!del){t.textContent=c.slice(0,++ci);if(ci===c.length){del=true;return setTimeout(tick,2000);}}else{t.textContent=c.slice(0,--ci);if(!ci){del=false;ri=(ri+1)%roles.length;}}setTimeout(tick,del?40:90);}
 tick();
 
@@ -439,37 +575,35 @@ themeBtn.addEventListener('click',()=>{
   themeBtn.innerHTML=document.body.classList.contains('light')?'&#9788;':'&#9202;';
 });
 
+// Language toggle
+document.getElementById('langBtn').addEventListener('click',()=>{
+  setLang(curLang==='en'?'zh':'en');
+});
+
 // Dynamic footer year
 document.getElementById('year').textContent=new Date().getFullYear();
 
-// Project portfolio (10 AI-infra repos + Compiler-C)
-const projects=[
-  {n:'llm-gateway',area:'Serving',d:'OpenAI-compatible proxy: per-key rate limits, cost caps, response caching, provider fallback.',t:['FastAPI','Rate Limit','Cost Cap','Cache','Fallback'],u:'https://github.com/theraihanrakibb/llm-gateway',w:'Production-grade multi-tenant LLM traffic control.'},
-  {n:'mini-serve',area:'Serving',d:'Inference server: dynamic batching, SSE streaming, and Prometheus metrics.',t:['FastAPI','Batching','SSE','Metrics'],u:'https://github.com/theraihanrakibb/mini-serve',w:'Low-latency serving with observability built in.'},
-  {n:'kv-cache-sim',area:'Serving',d:'KV-cache eviction + prefill/decode disaggregation simulator reporting TTFT/TPOT.',t:['KV Cache','PD Disagg','Simulator'],u:'https://github.com/theraihanrakibb/kv-cache-sim',w:'Models the exact serving trade-offs I tune in production.'},
-  {n:'llm-bench',area:'Serving',d:'LLM benchmark/eval harness: TTFT, TPOT, throughput, and a cost model.',t:['Benchmark','Eval','Cost Model'],u:'https://github.com/theraihanrakibb/llm-bench',w:'Quantifies serving performance end-to-end.'},
-  {n:'gpu-exporter',area:'Observability',d:'NVIDIA GPU Prometheus exporter + Grafana dashboard.',t:['Prometheus','Grafana','NVML','Docker'],u:'https://github.com/theraihanrakibb/gpu-exporter',w:'Cluster-wide GPU utilisation and health visibility.'},
-  {n:'llmoops-trace',area:'Observability',d:'OpenTelemetry LLM tracing collector + Grafana dashboard.',t:['OTel','Tracing','Grafana'],u:'https://github.com/theraihanrakibb/llmoops-trace',w:'Distributed request/cost tracing for LLM apps.'},
-  {n:'train-launcher',area:'Training',d:'Fault-tolerant multi-node PyTorch training launcher with auto-retry.',t:['PyTorch','Slurm','K8s','Retry'],u:'https://github.com/theraihanrakibb/train-launcher',w:'Resilient distributed training orchestration.'},
-  {n:'quant-playground',area:'Low-Precision',d:'FP8/FP4/INT8/INT4 bit-packing + a numpy MLP quantization demo.',t:['FP8','FP4','Quantization'],u:'https://github.com/theraihanrakibb/quant-playground',w:'Hands-on low-precision inference, the core of NVFP4-DiT.'},
-  {n:'model-registry',area:'MLOps',d:'Content-addressed model/dataset registry (mini-MLflow) with aliases.',t:['Registry','Artifacts','Aliases'],u:'https://github.com/theraihanrakibb/model-registry',w:'Reproducible model versioning and promotion.'},
-  {n:'rag-pipeline',area:'RAG',d:'Offline RAG toolkit: ingest → chunk → embed → ANN search → rerank.',t:['RAG','Embedding','ANN','Rerank'],u:'https://github.com/theraihanrakibb/rag-pipeline',w:'Retrieval pipeline usable beside serving stacks.'},
-  {n:'Compiler-C',area:'Systems',d:'Complete C compiler front-end: lexer, parser, AST, semantic analysis, codegen.',t:['Compiler','Yacc','Lex','Codegen'],u:'https://github.com/theraihanrakibb/Compiler-C',w:'Systems fundamentals behind fast runtimes.'}
-];
-
+// Render projects (respects curLang + currentFilter)
 const grid=document.getElementById('projGrid');
 function renderProjects(filter){
+  currentFilter=filter;
   grid.innerHTML='';
   projects.filter(p=>filter==='all'||p.area===filter).forEach(p=>{
+    const L=curLang;
+    const area=areaMap[L][p.area];
+    const d= L==='zh'? p.dz : p.d;
+    const w= L==='zh'? p.wz : p.w;
     const card=document.createElement('div');
     card.className='proj-card fade-in';
-    card.innerHTML=`<span class="tag tag-blue">${p.area}</span><h3>${p.n}</h3><p>${p.d}</p><p class="proj-why">${p.w}</p><div class="proj-tags">${p.t.map(x=>`<span>${x}</span>`).join('')}</div><a href="${p.u}" target="_blank" class="proj-link">GitHub &#8594;</a>`;
+    card.innerHTML=`<span class="tag tag-blue">${area}</span><h3>${p.n}</h3><p>${d}</p><p class="proj-why">${w}</p><div class="proj-tags">${p.t.map(x=>`<span>${x}</span>`).join('')}</div><a href="${p.u}" target="_blank" class="proj-link">GitHub &#8594;</a>`;
     grid.appendChild(card);
   });
-  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
-  grid.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+  const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
+  grid.querySelectorAll('.fade-in').forEach(el=>o.observe(el));
 }
 renderProjects('all');
+
+// Project filter
 document.getElementById('projFilters').addEventListener('click',e=>{
   if(!e.target.classList.contains('chip'))return;
   document.querySelectorAll('#projFilters .chip').forEach(c=>c.classList.remove('active'));
@@ -477,6 +611,8 @@ document.getElementById('projFilters').addEventListener('click',e=>{
   renderProjects(e.target.dataset.filter);
 });
 
+// Init language from storage
+try{const saved=localStorage.getItem('lang');if(saved==='zh'||saved==='en')setLang(saved);}catch(e){}
 </script>
 </body>
 </html>

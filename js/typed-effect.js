@@ -1,6 +1,6 @@
 (function () {
   const roles = [
-    "AI Infrastructure Engineer",
+    "AI Engineer",
     "Multimodal Researcher",
     "CUDA/Triton Developer",
     "AI Product Manager"

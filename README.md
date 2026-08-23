@@ -1,6 +1,6 @@
 # Online Portfolio
 
-Personal portfolio website for **MD RAKIBUL ISLAM RAIHAN** — AI Infrastructure Engineer targeting 2027 New Grad roles in **LLM Inference / GPU Systems** across Mainland China & Hong Kong (MNC & global AI R&D).
+Personal portfolio website for **MD RAKIBUL ISLAM RAIHAN** — AI Engineer targeting 2027 New Grad roles in **LLM Inference / GPU Systems** across Mainland China & Hong Kong (MNC & global AI R&D).
 
 🔗 **Live site:** https://theraihanrakibb.github.io/Online-Portfolio/
 

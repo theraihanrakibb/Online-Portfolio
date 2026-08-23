@@ -4,7 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>MD RAKIBUL ISLAM RAIHAN | AI Infrastructure Engineer</title>
-<meta name="description" content="AI Infrastructure Engineer specializing in LLM inference, GPU optimization, and multimodal AI.">
+<meta name="description" content="AI Infrastructure Engineer specializing in LLM inference, GPU optimization, and multimodal AI. New Graduate 2027 targeting roles across China & Hong Kong.">
+<meta property="og:title" content="MD RAKIBUL ISLAM RAIHAN | AI Infrastructure Engineer">
+<meta property="og:description" content="LLM Inference & GPU Systems · KV-cache · PD-Disaggregation · FP8/FP4 · RDMA. New Graduate 2027 (China & Hong Kong).">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theraihanrakibb.github.io/Online-Portfolio/">
+<meta property="og:image" content="https://theraihanrakibb.github.io/Online-Portfolio/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MD RAKIBUL ISLAM RAIHAN | AI Infrastructure Engineer">
+<meta name="twitter:description" content="LLM Inference & GPU Systems · KV-cache · PD-Disaggregation · FP8/FP4 · RDMA. New Graduate 2027 (China & Hong Kong).">
+<meta name="twitter:image" content="https://theraihanrakibb.github.io/Online-Portfolio/assets/og-image.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2300e5ff'/><stop offset='1' stop-color='%23ff5e9c'/></linearGradient></defs><rect width='64' height='64' rx='14' fill='url(%23g)'/><text x='32' y='43' font-family='monospace' font-size='34' font-weight='700' fill='%23080b14' text-anchor='middle'>R</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -49,6 +59,27 @@ nav.scrolled{background:rgba(8,11,20,.8);backdrop-filter:blur(20px);border-botto
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
 .hero-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .badge{padding:6px 16px;border-radius:50px;background:var(--card);border:1px solid var(--border);font-size:.78rem;color:var(--muted)}
+
+/* Hero two-column + availability pill + photo */
+.hero-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:56px;flex-wrap:wrap}
+.hero-text{text-align:left;flex:1;min-width:300px}
+.avail-pill{display:inline-block;padding:8px 18px;border-radius:50px;background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.4);color:var(--accent);font-size:.85rem;font-weight:600;margin-bottom:22px;box-shadow:0 0 22px rgba(0,229,255,.18)}
+.hero-photo{background:var(--grad);padding:4px;border-radius:50%;box-shadow:0 0 44px rgba(0,229,255,.28);flex-shrink:0}
+.hero-photo img{width:220px;height:220px;border-radius:50%;object-fit:cover;display:block;border:3px solid var(--bg)}
+
+/* Impact stats strip */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px}
+.stat{text-align:center;padding:26px 18px;background:var(--card);border:1px solid var(--border);border-radius:16px;transition:all .3s}
+.stat:hover{border-color:rgba(0,229,255,.3);transform:translateY(-3px)}
+.stat-num{font-size:2.2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
+.stat-label{color:var(--muted);font-size:.82rem;margin-top:8px}
+
+/* Project filter chips */
+.filter-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:36px}
+.chip{padding:7px 18px;border-radius:50px;background:var(--card);border:1px solid var(--border);color:var(--muted);font-size:.82rem;font-weight:500;cursor:pointer;transition:all .2s}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip.active{background:var(--grad);color:#080b14;border-color:transparent}
+.proj-why{font-size:.8rem;color:var(--accent);font-style:italic;margin-bottom:10px}
 
 /* Sections */
 section{padding:80px 24px}
@@ -126,6 +157,9 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:.82rem;border
   .nav-links{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(8,11,20,.95);backdrop-filter:blur(20px);flex-direction:column;padding:20px;gap:14px;border-bottom:1px solid var(--border)}
   .nav-links.open{display:flex}
   .menu-btn{display:block}
+  .hero-inner{flex-direction:column;gap:32px;text-align:center}
+  .hero-text{text-align:center}
+  .hero-photo img{width:170px;height:170px}
 }
 
 /* Theme toggle button */
@@ -158,20 +192,35 @@ body.light .tl-dot{border-color:var(--bg)}
 </nav>
 
 <section class="hero" id="hero">
-  <div>
-    <h1><span class="name-grad">MD RAKIBUL ISLAM RAIHAN</span></h1>
-    <div class="hero-role"><span id="typed"></span><span class="cursor">|</span></div>
-    <p class="hero-tag">LLM Inference Systems &#8226; GPU Optimization &#8226; Multimodal AI Research</p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn btn-primary">Get in Touch</a>
-      <a href="#projects" class="btn btn-ghost">View Projects</a>
-      <a href="https://github.com/theraihanrakibb/Online-Portfolio/raw/main/assets/resume.pdf" target="_blank" class="btn btn-primary" style="background:linear-gradient(135deg,#ff5e9c,#b566ff)">Download Resume</a>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="avail-pill">🎓 Open to 2027 New Grad Roles · China &amp; Hong Kong</div>
+      <h1><span class="name-grad">MD RAKIBUL ISLAM RAIHAN</span></h1>
+      <div class="hero-role"><span id="typed"></span><span class="cursor">|</span></div>
+      <p class="hero-tag">LLM Inference Systems &#8226; GPU Optimization &#8226; Multimodal AI Research</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-primary">Get in Touch</a>
+        <a href="#projects" class="btn btn-ghost">View Projects</a>
+        <a href="https://github.com/theraihanrakibb/Online-Portfolio/raw/main/assets/resume.pdf" target="_blank" class="btn btn-primary" style="background:linear-gradient(135deg,#ff5e9c,#b566ff)">Download Resume</a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">NWPU Top 1%</span>
+        <span class="badge">Chinese Gov Scholarship</span>
+        <span class="badge">IEEE TNNLS Under Review</span>
+      </div>
     </div>
-    <div class="hero-badges">
-      <span class="badge">NWPU Top 1%</span>
-      <span class="badge">Chinese Gov Scholarship</span>
-      <span class="badge">IEEE TNNLS Under Review</span>
+    <div class="hero-photo">
+      <img src="assets/Raihan.png" alt="MD RAKIBUL ISLAM RAIHAN">
     </div>
+  </div>
+</section>
+
+<section id="stats" style="padding:40px 24px">
+  <div class="container stats-grid">
+    <div class="stat fade-in"><div class="stat-num">92.27%</div><div class="stat-label">KV-cache hit rate</div></div>
+    <div class="stat fade-in"><div class="stat-num">8.3&times;</div><div class="stat-label">TTFT reduction (4&times;A800 PD)</div></div>
+    <div class="stat fade-in"><div class="stat-num">4&times;</div><div class="stat-label">Memory (FP4 / NVFP4-DiT)</div></div>
+    <div class="stat fade-in"><div class="stat-num">10</div><div class="stat-label">Production OSS repos</div></div>
   </div>
 </section>
 
@@ -258,32 +307,40 @@ body.light .tl-dot{border-color:var(--bg)}
   </div>
 </section>
 
+<section id="oss">
+  <div class="container">
+    <h2 class="sec-title fade-in">Open-Source <span>Contributions</span></h2>
+    <div class="grid-3">
+      <div class="proj-card fade-in" style="border-color:rgba(0,229,255,.2)">
+        <span class="tag tag-blue">SGLang &#8226; Open PR</span>
+        <h3>KV-cache eviction unit tests</h3>
+        <p>Added unit tests for KV-cache eviction priority strategies in <strong>sgl-project/sglang</strong> (PR #31121) &mdash; directly relevant to production LLM serving.</p>
+        <a href="https://github.com/sgl-project/sglang/pull/31121" target="_blank" class="proj-link">View PR &#8594;</a>
+      </div>
+      <div class="proj-card fade-in">
+        <span class="tag tag-purple">Active OSS Contributor</span>
+        <h3>Upstream &amp; community</h3>
+        <p>Opened PRs and doc/typo fixes across multiple open-source projects (SGLang, SDKs, developer tooling), building a consistent public contribution history.</p>
+        <a href="https://github.com/theraihanrakibb?tab=overview" target="_blank" class="proj-link">GitHub &#8594;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="projects" style="background:var(--bg2)">
   <div class="container">
     <h2 class="sec-title fade-in">Featured <span>Projects</span></h2>
-    <div class="grid-3">
-      <div class="proj-card fade-in">
-        <h3>Deepfake Detector</h3>
-        <p style="color:var(--accent);font-size:.75rem;margin-bottom:8px">Python &#8226; PyTorch</p>
-        <p>Multimodal deepfake detection: EfficientNet-B0 + FFT, MFCC audio, Transformer temporal, attention fusion. Ablation runner, Grad-CAM, ensemble, cross-dataset eval.</p>
-        <div class="proj-tags"><span>EfficientNet</span><span>FFT</span><span>MFCC</span><span>Transformer</span><span>Grad-CAM</span></div>
-        <a href="https://github.com/theraihanrakibb/DeepfakeAudioVisualTemporalDetector" class="proj-link">GitHub &#8594;</a>
-      </div>
-      <div class="proj-card fade-in">
-        <h3>NVFP4-DiT</h3>
-        <p style="color:var(--accent);font-size:.75rem;margin-bottom:8px">Python &#8226; CUDA &#8226; LaTeX</p>
-        <p>4-bit low-precision training for audio-guided video diffusion transformers. 4x memory reduction. IEEE TNNLS under review.</p>
-        <div class="proj-tags"><span>FP4</span><span>Diffusion</span><span>Quantization</span><span>Video Gen</span></div>
-        <a href="https://github.com/theraihanrakibb/NVFP4-DiT" class="proj-link">GitHub &#8594;</a>
-      </div>
-      <div class="proj-card fade-in">
-        <h3>Compiler-C</h3>
-        <p style="color:var(--accent);font-size:.75rem;margin-bottom:8px">C &#8226; Yacc &#8226; Lex</p>
-        <p>Complete C compiler: lexer, parser, AST, semantic analysis, code generation.</p>
-        <div class="proj-tags"><span>Compiler</span><span>Yacc</span><span>Lex</span><span>Codegen</span></div>
-        <a href="https://github.com/theraihanrakibb/Compiler-C" class="proj-link">GitHub &#8594;</a>
-      </div>
+    <div class="filter-chips" id="projFilters">
+      <button class="chip active" data-filter="all">All</button>
+      <button class="chip" data-filter="Serving">Serving</button>
+      <button class="chip" data-filter="Observability">Observability</button>
+      <button class="chip" data-filter="Training">Training</button>
+      <button class="chip" data-filter="Low-Precision">Low-Precision</button>
+      <button class="chip" data-filter="RAG">RAG</button>
+      <button class="chip" data-filter="MLOps">MLOps</button>
+      <button class="chip" data-filter="Systems">Systems</button>
     </div>
+    <div class="grid-3" id="projGrid"></div>
   </div>
 </section>
 
@@ -353,7 +410,7 @@ body.light .tl-dot{border-color:var(--bg)}
   </div>
 </section>
 
-<footer><p>&copy; 2026 MD RAKIBUL ISLAM RAIHAN</p></footer>
+<footer><p>&copy; <span id="year">2026</span> MD RAKIBUL ISLAM RAIHAN</p></footer>
 
 <script>
 // Typing
@@ -380,6 +437,44 @@ const themeBtn=document.getElementById('themeBtn');
 themeBtn.addEventListener('click',()=>{
   document.body.classList.toggle('light');
   themeBtn.innerHTML=document.body.classList.contains('light')?'&#9788;':'&#9202;';
+});
+
+// Dynamic footer year
+document.getElementById('year').textContent=new Date().getFullYear();
+
+// Project portfolio (10 AI-infra repos + Compiler-C)
+const projects=[
+  {n:'llm-gateway',area:'Serving',d:'OpenAI-compatible proxy: per-key rate limits, cost caps, response caching, provider fallback.',t:['FastAPI','Rate Limit','Cost Cap','Cache','Fallback'],u:'https://github.com/theraihanrakibb/llm-gateway',w:'Production-grade multi-tenant LLM traffic control.'},
+  {n:'mini-serve',area:'Serving',d:'Inference server: dynamic batching, SSE streaming, and Prometheus metrics.',t:['FastAPI','Batching','SSE','Metrics'],u:'https://github.com/theraihanrakibb/mini-serve',w:'Low-latency serving with observability built in.'},
+  {n:'kv-cache-sim',area:'Serving',d:'KV-cache eviction + prefill/decode disaggregation simulator reporting TTFT/TPOT.',t:['KV Cache','PD Disagg','Simulator'],u:'https://github.com/theraihanrakibb/kv-cache-sim',w:'Models the exact serving trade-offs I tune in production.'},
+  {n:'llm-bench',area:'Serving',d:'LLM benchmark/eval harness: TTFT, TPOT, throughput, and a cost model.',t:['Benchmark','Eval','Cost Model'],u:'https://github.com/theraihanrakibb/llm-bench',w:'Quantifies serving performance end-to-end.'},
+  {n:'gpu-exporter',area:'Observability',d:'NVIDIA GPU Prometheus exporter + Grafana dashboard.',t:['Prometheus','Grafana','NVML','Docker'],u:'https://github.com/theraihanrakibb/gpu-exporter',w:'Cluster-wide GPU utilisation and health visibility.'},
+  {n:'llmoops-trace',area:'Observability',d:'OpenTelemetry LLM tracing collector + Grafana dashboard.',t:['OTel','Tracing','Grafana'],u:'https://github.com/theraihanrakibb/llmoops-trace',w:'Distributed request/cost tracing for LLM apps.'},
+  {n:'train-launcher',area:'Training',d:'Fault-tolerant multi-node PyTorch training launcher with auto-retry.',t:['PyTorch','Slurm','K8s','Retry'],u:'https://github.com/theraihanrakibb/train-launcher',w:'Resilient distributed training orchestration.'},
+  {n:'quant-playground',area:'Low-Precision',d:'FP8/FP4/INT8/INT4 bit-packing + a numpy MLP quantization demo.',t:['FP8','FP4','Quantization'],u:'https://github.com/theraihanrakibb/quant-playground',w:'Hands-on low-precision inference, the core of NVFP4-DiT.'},
+  {n:'model-registry',area:'MLOps',d:'Content-addressed model/dataset registry (mini-MLflow) with aliases.',t:['Registry','Artifacts','Aliases'],u:'https://github.com/theraihanrakibb/model-registry',w:'Reproducible model versioning and promotion.'},
+  {n:'rag-pipeline',area:'RAG',d:'Offline RAG toolkit: ingest → chunk → embed → ANN search → rerank.',t:['RAG','Embedding','ANN','Rerank'],u:'https://github.com/theraihanrakibb/rag-pipeline',w:'Retrieval pipeline usable beside serving stacks.'},
+  {n:'Compiler-C',area:'Systems',d:'Complete C compiler front-end: lexer, parser, AST, semantic analysis, codegen.',t:['Compiler','Yacc','Lex','Codegen'],u:'https://github.com/theraihanrakibb/Compiler-C',w:'Systems fundamentals behind fast runtimes.'}
+];
+
+const grid=document.getElementById('projGrid');
+function renderProjects(filter){
+  grid.innerHTML='';
+  projects.filter(p=>filter==='all'||p.area===filter).forEach(p=>{
+    const card=document.createElement('div');
+    card.className='proj-card fade-in';
+    card.innerHTML=`<span class="tag tag-blue">${p.area}</span><h3>${p.n}</h3><p>${p.d}</p><p class="proj-why">${p.w}</p><div class="proj-tags">${p.t.map(x=>`<span>${x}</span>`).join('')}</div><a href="${p.u}" target="_blank" class="proj-link">GitHub &#8594;</a>`;
+    grid.appendChild(card);
+  });
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
+  grid.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+}
+renderProjects('all');
+document.getElementById('projFilters').addEventListener('click',e=>{
+  if(!e.target.classList.contains('chip'))return;
+  document.querySelectorAll('#projFilters .chip').forEach(c=>c.classList.remove('active'));
+  e.target.classList.add('active');
+  renderProjects(e.target.dataset.filter);
 });
 
 </script>

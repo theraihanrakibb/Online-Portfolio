@@ -20,7 +20,7 @@ Personal portfolio website for **MD RAKIBUL ISLAM RAIHAN** — AI Engineer targe
 - `index.html` — the entire site (markup + styles + logic).
 - `assets/Raihan.png` — profile photo.
 - `assets/og-image.png` — 1200×630 social preview image.
-- `assets/resume.pdf` — downloadable CV (2027 HK/China resume).
+- `assets/resume.pdf` (also `assets/Raihan_Northwestern_Polytechnical_University_MS_2027.pdf`) — downloadable 2027 NWPU M.Eng. resume (HK/China).
 
 ## Run locally
 

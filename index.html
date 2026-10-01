@@ -176,6 +176,29 @@ body.light .contact-ico{color:#fff}
 body.light .tl-dot{border-color:var(--bg)}
 
 </style>
+
+<!-- ATS / SEO: structured Person data so parsers & search engines read the profile -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "MD Rakibul Islam Raihan",
+  "alternateName": "Raihan",
+  "jobTitle": "AI Engineer",
+  "url": "https://theraihanrakibb.github.io/Online-Portfolio/",
+  "email": "mailto:raihanrakib.143@gmail.com",
+  "telephone": "+86-17722362949",
+  "address": {"@type": "PostalAddress", "addressLocality": "Xi'an", "addressCountry": "China"},
+  "alumniOf": "Northwestern Polytechnical University",
+  "knowsAbout": ["LLM Inference", "GPU Optimization", "Multimodal AI", "KV-cache",
+    "PD Disaggregation", "FP8 Quantization", "SGLang", "RDMA", "Diffusion Models"],
+  "sameAs": [
+    "https://linkedin.com/in/theraihanrakib",
+    "https://github.com/theraihanrakibb",
+    "https://x.com/theraihanrakib"
+  ]
+}
+</script>
 </head>
 <body>
 <div class="bg-animation"></div>
@@ -203,7 +226,8 @@ body.light .tl-dot{border-color:var(--bg)}
       <div class="hero-btns">
         <a href="#contact" class="btn btn-primary" data-i18n="btn.touch">Get in Touch</a>
         <a href="#projects" class="btn btn-ghost" data-i18n="btn.projects">View Projects</a>
-        <a href="https://github.com/theraihanrakibb/Online-Portfolio/raw/main/assets/resume.pdf" target="_blank" class="btn btn-primary" style="background:linear-gradient(135deg,#ff5e9c,#b566ff)" data-i18n="btn.resume">Download Resume</a>
+        <a href="assets/resume/Raihan_AI_Engineer_Resume_EN.pdf" target="_blank" class="btn btn-primary" style="background:linear-gradient(135deg,#ff5e9c,#b566ff)" data-i18n="btn.resume">Download Resume (EN)</a>
+        <a href="assets/resume/Raihan_AI_Engineer_Resume_CN.pdf" target="_blank" class="btn btn-ghost" data-i18n="btn.resumeCn">简历 (中文)</a>
       </div>
       <div class="hero-badges">
         <span class="badge" data-i18n="badge.nwpu">NWPU Top 1%</span>
@@ -421,7 +445,7 @@ const I18N={
     'nav.home':'Home','nav.about':'About','nav.exp':'Experience','nav.research':'Research','nav.projects':'Projects','nav.skills':'Skills','nav.contact':'Contact',
     'avail':'🎓 Open to 2027 New Grad Roles · China &amp; Hong Kong',
     'heroTag':'LLM Inference Systems &#8226; GPU Optimization &#8226; Multimodal AI Research',
-    'btn.touch':'Get in Touch','btn.projects':'View Projects','btn.resume':'Download Resume',
+    'btn.touch':'Get in Touch','btn.projects':'View Projects','btn.resume':'Download Resume (EN)','btn.resumeCn':'简历 (中文)',
     'badge.nwpu':'NWPU Top 1%','badge.scholar':'Chinese Gov Scholarship','badge.ieee':'IEEE TNNLS Under Review',
     'stat.kv':'KV-cache hit rate','stat.ttft':'TTFT reduction (4&times;A800 PD)','stat.mem':'Memory (FP4 / NVFP4-DiT)','stat.repos':'Production OSS repos',
     'about.title':'About <span>Me</span>','about.ai.h':'AI Infrastructure','about.ai.p':'Designed 3-tier KV-cache (GPU&#8594;CPU&#8594;SSD) with SGLang + RDMA achieving <strong>92.27% hit rate</strong> and <strong>8.3x TTFT reduction</strong> on 4xA800.',
@@ -451,9 +475,8 @@ const I18N={
     'chip.all':'All','chip.serving':'Serving','chip.observability':'Observability','chip.training':'Training','chip.lowprec':'Low-Precision','chip.rag':'RAG','chip.mlops':'MLOps','chip.systems':'Systems',
     'skills.title':'Technical <span>Skills</span>',
     'cat.lang':'Languages','cat.llm':'LLM Systems','cat.gpu':'GPU &amp; ML','cat.infra':'Infra','cat.web':'Web &amp; Tools','cat.research':'Research',
-    'edu.me.h':'M.Eng. Software Engineering','edu.me.p':'NWPU (985/211)','edu.me.d':'Sep 2024 &#8211; Mar 2027 &#8226; GPA 88/100 (Top 1%)','edu.me.link':'Thesis PDF &#8594;',
+    'edu.me.h':'M.Eng. Software Engineering','edu.me.p':'NWPU (985/211)','edu.me.d':'Sep 2024 &#8211; Jul 2027 &#8226; GPA 88/100 (Top 1%)','edu.me.link':'Thesis PDF &#8594;',
     'edu.be.h':'B.Eng. Computer Science','edu.be.p':'NWPU (985/211)','edu.be.d':'Sep 2020 &#8211; Jul 2024 &#8226; GPA 85/100 (Top 1%)','edu.be.link':'Thesis PDF &#8594;',
-    'edu.be.h':'B.Eng. Computer Science','edu.be.p':'NWPU (985/211)','edu.be.d':'Sep 2020 &#8211; Jul 2024 &#8226; GPA 85/100 (Top 1%)',
     'honor.gov':'&#127942; Chinese Gov Scholarship','honor.pres':'&#127942; Presidential Scholarship','honor.thesis':'&#127942; Best Thesis Award','honor.out':'&#127942; Outstanding Graduate','honor.hack':'&#127942; Hackathon Winner',
     'int.title':'Research <span>Interests</span>',
     'int1.h':'AI Infrastructure','int1.p':'LLM inference systems, KV-cache architecture, PD disaggregation, RDMA-based distributed serving on multi-GPU clusters.',
@@ -466,7 +489,7 @@ const I18N={
     'nav.home':'首页','nav.about':'关于','nav.exp':'经历','nav.research':'研究','nav.projects':'项目','nav.skills':'技能','nav.contact':'联系',
     'avail':'🎓 2027 应届求职 · 中国 &amp; 香港',
     'heroTag':'大模型推理系统 &#8226; GPU 优化 &#8226; 多模态 AI 研究',
-    'btn.touch':'联系我','btn.projects':'查看项目','btn.resume':'下载简历',
+    'btn.touch':'联系我','btn.projects':'查看项目','btn.resume':'下载简历（EN）','btn.resumeCn':'简历（中文）',
     'badge.nwpu':'西北工业大学 前 1%','badge.scholar':'中国政府奖学金','badge.ieee':'IEEE TNNLS 审稿中',
     'stat.kv':'KV 缓存命中率','stat.ttft':'TTFT 降低 (4&times;A800 PD)','stat.mem':'显存 (FP4 / NVFP4-DiT)','stat.repos':'生产级开源仓库',
     'about.title':'关于<span>我</span>','about.ai.h':'AI 基础设施','about.ai.p':'基于 SGLang + RDMA 设计三级 KV 缓存（GPU&#8594;CPU&#8594;SSD），在 4×A800 上实现 <strong>92.27% 命中率</strong> 与 <strong>8.3× TTFT 降低</strong>。',
@@ -496,7 +519,7 @@ const I18N={
     'chip.all':'全部','chip.serving':'推理服务','chip.observability':'可观测性','chip.training':'训练','chip.lowprec':'低精度','chip.rag':'检索增强','chip.mlops':'模型运维','chip.systems':'系统',
     'skills.title':'技术<span>技能</span>',
     'cat.lang':'编程语言','cat.llm':'大模型系统','cat.gpu':'GPU 与机器学习','cat.infra':'基础设施','cat.web':'Web 与工具','cat.research':'研究',
-    'edu.me.h':'软件工程硕士','edu.me.p':'西北工业大学（985/211）','edu.me.d':'2024年9月 – 2027年3月 · GPA 88/100（前 1%）','edu.me.link':'论文 PDF &#8594;',
+    'edu.me.h':'软件工程硕士','edu.me.p':'西北工业大学（985/211）','edu.me.d':'2024年9月 – 2027年7月 · GPA 88/100（前 1%）','edu.me.link':'论文 PDF &#8594;',
     'edu.be.h':'计算机科学学士','edu.be.p':'西北工业大学（985/211）','edu.be.d':'2020年9月 – 2024年7月 · GPA 85/100（前 1%）','edu.be.link':'论文 PDF &#8594;',
     'honor.gov':'🏆 中国政府奖学金','honor.pres':'🏆 校长奖学金','honor.thesis':'🏆 最佳论文奖','honor.out':'🏆 优秀毕业生','honor.hack':'🏆 黑客松冠军',
     'int.title':'研究<span>兴趣</span>',

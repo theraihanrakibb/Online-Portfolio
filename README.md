@@ -20,7 +20,9 @@ Personal portfolio website for **MD RAKIBUL ISLAM RAIHAN** — AI Engineer targe
 - `index.html` — the entire site (markup + styles + logic).
 - `assets/Raihan.png` — profile photo.
 - `assets/og-image.png` — 1200×630 social preview image.
-- `assets/resume.pdf` (also `assets/Raihan_Northwestern_Polytechnical_University_MS_2027.pdf`) — downloadable 2027 NWPU M.Eng. resume (HK/China).
+- `assets/resume/Raihan_AI_Engineer_Resume_EN.pdf` — downloadable 2027 NWPU M.Eng. resume (English).
+- `assets/resume/Raihan_AI_Engineer_Resume_CN.pdf` — same resume in Chinese (中文).
+- `assets/resume.pdf` (also `assets/Raihan_Northwestern_Polytechnical_University_MS_2027.pdf`) — copy of the English resume for backward compatibility.
 
 ## Run locally
 
@@ -37,7 +39,7 @@ Deployed on **GitHub Pages**. Push to the `main` branch — changes go live with
 
 ## Education
 
-- **M.Eng. Software Engineering** — Northwestern Polytechnical University (985/211), Sep 2024 – Mar 2027 · GPA 88/100 (Top 1%).
+- **M.Eng. Software Engineering** — Northwestern Polytechnical University (985/211), Sep 2024 – Jul 2027 · GPA 88/100 (Top 1%).
   Thesis: [Detecting Deepfake Video by a Multimodal Audio-Visual Framework with Temporal Inconsistencies](https://github.com/theraihanrakibb/M.Eng-Thesis-Multimodal-Deepfake-Audio-Visual-Temporal-Framework)
 - **B.Eng. Computer Science & Technology** — Northwestern Polytechnical University (985/211), Sep 2020 – Jul 2024 · GPA 85/100 (Top 1%).
   Thesis: [Design and Implementation of a Distributed Confidential Query Protocol for Spark](https://github.com/theraihanrakibb/B.Eng-Thesis-Design-and-Implementation-of-a-Distributed-Confidential-Query-Protocol-for-Spark)

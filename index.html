@@ -57,6 +57,17 @@ nav.scrolled{background:rgba(8,11,20,.8);backdrop-filter:blur(20px);border-botto
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(0,229,255,.3)}
 .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
+
+/* Resume language chooser (single button) */
+.resume-dd{position:relative;display:inline-block}
+.resume-toggle{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#ff5e9c,#b566ff)}
+.resume-toggle .caret{font-size:.65rem;transition:transform .25s}
+.resume-toggle[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.resume-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);min-width:180px;background:rgba(15,19,32,.98);border:1px solid var(--border);border-radius:14px;padding:6px;display:none;flex-direction:column;gap:2px;z-index:200;box-shadow:0 14px 44px rgba(0,0,0,.55);backdrop-filter:blur(20px)}
+.resume-menu.open{display:flex}
+.resume-menu a{padding:11px 16px;border-radius:10px;font-size:.85rem;font-weight:500;color:var(--text);white-space:nowrap;transition:all .2s;text-align:left}
+.resume-menu a:hover{background:var(--card-hover);color:var(--accent)}
+body.light .resume-menu{background:#fff}
 .hero-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .badge{padding:6px 16px;border-radius:50px;background:var(--card);border:1px solid var(--border);font-size:.78rem;color:var(--muted)}
 
@@ -226,8 +237,13 @@ body.light .tl-dot{border-color:var(--bg)}
       <div class="hero-btns">
         <a href="#contact" class="btn btn-primary" data-i18n="btn.touch">Get in Touch</a>
         <a href="#projects" class="btn btn-ghost" data-i18n="btn.projects">View Projects</a>
-        <a href="assets/resume/Raihan_AI_Engineer_Resume_EN.pdf" target="_blank" class="btn btn-primary" style="background:linear-gradient(135deg,#ff5e9c,#b566ff)" data-i18n="btn.resume">Download Resume (EN)</a>
-        <a href="assets/resume/Raihan_AI_Engineer_Resume_CN.pdf" target="_blank" class="btn btn-ghost" data-i18n="btn.resumeCn">简历 (中文)</a>
+        <div class="resume-dd" id="resumeDD">
+          <button class="btn resume-toggle" id="resumeBtn" aria-haspopup="true" aria-expanded="false"><span data-i18n="btn.resume">Download Resume</span><span class="caret">&#9662;</span></button>
+          <div class="resume-menu" id="resumeMenu" role="menu">
+            <a role="menuitem" href="assets/resume/Raihan_AI_Engineer_Resume_EN.pdf" target="_blank" data-i18n="resume.en">English (EN)</a>
+            <a role="menuitem" href="assets/resume/Raihan_AI_Engineer_Resume_CN.pdf" target="_blank" data-i18n="resume.cn">中文 (ZH)</a>
+          </div>
+        </div>
       </div>
       <div class="hero-badges">
         <span class="badge" data-i18n="badge.nwpu">NWPU Top 1%</span>
@@ -445,7 +461,7 @@ const I18N={
     'nav.home':'Home','nav.about':'About','nav.exp':'Experience','nav.research':'Research','nav.projects':'Projects','nav.skills':'Skills','nav.contact':'Contact',
     'avail':'🎓 Open to 2027 New Grad Roles · China &amp; Hong Kong',
     'heroTag':'LLM Inference Systems &#8226; GPU Optimization &#8226; Multimodal AI Research',
-    'btn.touch':'Get in Touch','btn.projects':'View Projects','btn.resume':'Download Resume (EN)','btn.resumeCn':'简历 (中文)',
+    'btn.touch':'Get in Touch','btn.projects':'View Projects','btn.resume':'Download Resume','resume.en':'English (EN)','resume.cn':'中文 (ZH)',
     'badge.nwpu':'NWPU Top 1%','badge.scholar':'Chinese Gov Scholarship','badge.ieee':'IEEE TNNLS Under Review',
     'stat.kv':'KV-cache hit rate','stat.ttft':'TTFT reduction (4&times;A800 PD)','stat.mem':'Memory (FP4 / NVFP4-DiT)','stat.repos':'Production OSS repos',
     'about.title':'About <span>Me</span>','about.ai.h':'AI Infrastructure','about.ai.p':'Designed 3-tier KV-cache (GPU&#8594;CPU&#8594;SSD) with SGLang + RDMA achieving <strong>92.27% hit rate</strong> and <strong>8.3x TTFT reduction</strong> on 4xA800.',
@@ -489,7 +505,7 @@ const I18N={
     'nav.home':'首页','nav.about':'关于','nav.exp':'经历','nav.research':'研究','nav.projects':'项目','nav.skills':'技能','nav.contact':'联系',
     'avail':'🎓 2027 应届求职 · 中国 &amp; 香港',
     'heroTag':'大模型推理系统 &#8226; GPU 优化 &#8226; 多模态 AI 研究',
-    'btn.touch':'联系我','btn.projects':'查看项目','btn.resume':'下载简历（EN）','btn.resumeCn':'简历（中文）',
+    'btn.touch':'联系我','btn.projects':'查看项目','btn.resume':'下载简历','resume.en':'English (EN)','resume.cn':'中文 (ZH)',
     'badge.nwpu':'西北工业大学 前 1%','badge.scholar':'中国政府奖学金','badge.ieee':'IEEE TNNLS 审稿中',
     'stat.kv':'KV 缓存命中率','stat.ttft':'TTFT 降低 (4&times;A800 PD)','stat.mem':'显存 (FP4 / NVFP4-DiT)','stat.repos':'生产级开源仓库',
     'about.title':'关于<span>我</span>','about.ai.h':'AI 基础设施','about.ai.p':'基于 SGLang + RDMA 设计三级 KV 缓存（GPU&#8594;CPU&#8594;SSD），在 4×A800 上实现 <strong>92.27% 命中率</strong> 与 <strong>8.3× TTFT 降低</strong>。',
@@ -604,6 +620,14 @@ themeBtn.addEventListener('click',()=>{
 document.getElementById('langBtn').addEventListener('click',()=>{
   setLang(curLang==='en'?'zh':'en');
 });
+
+// Resume language chooser (single button -> choose EN / 中文)
+const resumeBtn=document.getElementById('resumeBtn'),resumeMenu=document.getElementById('resumeMenu');
+if(resumeBtn){
+  resumeBtn.addEventListener('click',e=>{e.stopPropagation();const o=resumeMenu.classList.toggle('open');resumeBtn.setAttribute('aria-expanded',o);});
+  document.addEventListener('click',()=>{resumeMenu.classList.remove('open');resumeBtn.setAttribute('aria-expanded','false');});
+  resumeMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>resumeMenu.classList.remove('open')));
+}
 
 // Dynamic footer year
 document.getElementById('year').textContent=new Date().getFullYear();

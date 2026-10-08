@@ -20,9 +20,9 @@ Personal portfolio website for **MD RAKIBUL ISLAM RAIHAN** — ML Systems Engine
 - `index.html` — the entire site (markup + styles + logic).
 - `assets/Raihan.png` — profile photo.
 - `assets/og-image.png` — 1200×630 social preview image.
-- `assets/resume/Raihan_AI_Engineer_Resume_EN.pdf` — downloadable 2027 NWPU M.Eng. resume (English).
-- `assets/resume/Raihan_AI_Engineer_Resume_CN.pdf` — same resume in Chinese (中文).
-- `assets/resume.pdf` (also `assets/Raihan_Northwestern_Polytechnical_University_MS_2027.pdf`) — copy of the English resume for backward compatibility.
+- `assets/resume/Resume_Raihan_MLSys_NWPU_2027.pdf` — bilingual 2027 NWPU M.Eng. resume (English + 中文, 2 pages).
+- `assets/resume/CL_Raihan_MLSys_NWPU_2027.pdf` — bilingual cover letter (English + 中文, 2 pages).
+- `assets/resume/Resume_Raihan_NWPU_MS_2027.docx` — editable Word version of the resume.
 
 ## Run locally
 

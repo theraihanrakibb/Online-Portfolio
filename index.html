@@ -199,7 +199,11 @@ section{padding:80px 24px}
 .edu-link{display:inline-block;margin-top:10px;font-size:.82rem;font-weight:600;color:var(--accent)}
 .edu-logo{display:block;width:64px;height:64px;object-fit:contain;margin:0 auto 12px;transition:transform .45s ease}
 .edu-card:hover .edu-logo{transform:scale(1.08) rotate(-4deg)}
-.edu-card .edu-school{color:var(--text);font-weight:600;font-size:.9rem;margin-bottom:4px;line-height:1.35}
+.edu-card .edu-school{color:var(--muted);font-size:.85rem;margin-bottom:2px;line-height:1.35}
+.edu-card .edu-univ{font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:4px;line-height:1.45}
+.edu-univ a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(0,229,255,.35);transition:border-color .2s}
+.edu-univ a:hover{border-bottom-color:var(--accent)}
+.edu-univ a::after{content:'\2197';font-size:.75em;margin-left:3px;opacity:.8}
 .edu-tag{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:50px;font-size:.68rem;font-weight:600;letter-spacing:.01em;color:var(--accent);background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.25);vertical-align:middle}
 .honor-tags{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:860px;margin:0 auto 22px}
 .honor-tag{padding:12px 14px;border-radius:14px;background:linear-gradient(135deg,rgba(0,229,255,.06),rgba(181,102,255,.06));border:1px solid var(--border);font-size:.82rem;text-align:center;transition:transform .3s,border-color .3s,background .3s}
@@ -239,6 +243,7 @@ body.light .cmdk-box{background:#fff}
 
 @media(max-width:980px){
   .nav-links{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(8,11,20,.95);backdrop-filter:blur(20px);flex-direction:column;padding:20px;gap:14px;border-bottom:1px solid var(--border)}
+  body.light .nav-links{background:rgba(255,255,255,.97)}
   .nav-links.open{display:flex}
   .menu-btn{display:block}
 }
@@ -282,6 +287,11 @@ body.light .bg-animation::after{opacity:.08}
 body.light .btn-primary{color:#fff}
 body.light .contact-ico{color:#fff}
 body.light .tl-dot{border-color:var(--bg)}
+/* Light-mode legibility: surfaces that are dark by design */
+body.light nav.scrolled{background:rgba(255,255,255,.85);box-shadow:0 10px 34px rgba(0,0,0,.10)}
+body.light .resume-menu{background:rgba(255,255,255,.98);box-shadow:0 14px 44px rgba(0,0,0,.16)}
+body.light .tl-period,body.light .proj-tags span,body.light .skill-tag{background:rgba(0,0,0,.045)}
+body.light .edu-univ a{color:#0e7490;border-bottom-color:rgba(14,116,144,.4)}
 </style>
 
 <script type="application/ld+json">
@@ -424,8 +434,8 @@ body.light .tl-dot{border-color:var(--bg)}
   <div class="container">
     <h2 class="sec-title fade-in" data-i18n="edu.title">Education &amp; <span>Credentials</span></h2>
     <div class="edu-grid">
-      <div class="edu-card fade-in"><img class="edu-logo" src="assets/images/nwpu-seal.png" alt="Northwestern Polytechnical University seal" width="64" height="64" loading="lazy" decoding="async"><h4 data-i18n="edu.me.h">M.Eng. Software Engineering</h4><p class="edu-school" data-i18n="edu.me.p">Northwestern Polytechnical University <span class="edu-tag">985/211</span></p><p class="edu-date" data-i18n="edu.me.d">Sep 2024 &#8211; Jul 2027 | GPA 88/100 (Top 1%)</p><a href="https://github.com/theraihanrakibb/M.Eng-Thesis-Multimodal-Deepfake-Audio-Visual-Temporal-Framework" target="_blank" class="edu-link" data-i18n="edu.me.link">Thesis PDF &#8594;</a></div>
-      <div class="edu-card fade-in"><img class="edu-logo" src="assets/images/nwpu-seal.png" alt="Northwestern Polytechnical University seal" width="64" height="64" loading="lazy" decoding="async"><h4 data-i18n="edu.be.h">B.Eng. Computer Science</h4><p class="edu-school" data-i18n="edu.be.p">Northwestern Polytechnical University <span class="edu-tag">985/211</span></p><p class="edu-date" data-i18n="edu.be.d">Sep 2020 &#8211; Jul 2024 | GPA 85/100 (Top 1%)</p><a href="https://github.com/theraihanrakibb/B.Eng-Thesis-Design-and-Implementation-of-a-Distributed-Confidential-Query-Protocol-for-Spark" target="_blank" class="edu-link" data-i18n="edu.be.link">Thesis PDF &#8594;</a></div>
+      <div class="edu-card fade-in"><img class="edu-logo" src="assets/images/nwpu-seal.png" alt="Northwestern Polytechnical University seal" width="64" height="64" loading="lazy" decoding="async"><h4 data-i18n="edu.me.h">M.Eng. in Software Engineering</h4><p class="edu-school" data-i18n="edu.me.s">School of Software</p><p class="edu-univ" data-i18n="edu.me.p"><a href="https://www.nwpu.edu.cn/" target="_blank" rel="noopener">Northwestern Polytechnical University (NWPU)</a> <span class="edu-tag">985/211</span></p><p class="edu-date" data-i18n="edu.me.d">Sep 2024 &#8211; Jul 2027 | GPA 88/100 (Top 1%)</p><a href="https://github.com/theraihanrakibb/M.Eng-Thesis-Multimodal-Deepfake-Audio-Visual-Temporal-Framework" target="_blank" rel="noopener" class="edu-link" data-i18n="edu.me.link">Thesis PDF &#8594;</a></div>
+      <div class="edu-card fade-in"><img class="edu-logo" src="assets/images/nwpu-seal.png" alt="Northwestern Polytechnical University seal" width="64" height="64" loading="lazy" decoding="async"><h4 data-i18n="edu.be.h">B.Eng. in Computer Science &amp; Technology</h4><p class="edu-school" data-i18n="edu.be.s">School of Computer Science</p><p class="edu-univ" data-i18n="edu.be.p"><a href="https://www.nwpu.edu.cn/" target="_blank" rel="noopener">Northwestern Polytechnical University (NWPU)</a> <span class="edu-tag">985/211</span></p><p class="edu-date" data-i18n="edu.be.d">Sep 2020 &#8211; Jul 2024 | GPA 85/100 (Top 1%)</p><a href="https://github.com/theraihanrakibb/B.Eng-Thesis-Design-and-Implementation-of-a-Distributed-Confidential-Query-Protocol-for-Spark" target="_blank" rel="noopener" class="edu-link" data-i18n="edu.be.link">Thesis PDF &#8594;</a></div>
     </div>
     <div class="honor-tags fade-in">
       <span class="honor-tag" data-i18n="honor.gov">&#127942; Chinese Gov Scholarship</span>
@@ -651,8 +661,8 @@ const I18N={
     'chip.all':'All','chip.serving':'Serving','chip.observability':'Observability','chip.training':'Training','chip.lowprec':'Low-Precision','chip.rag':'RAG','chip.mlops':'MLOps','chip.systems':'Systems',
     'skills.title':'Technical <span>Skills</span>',
     'cat.llm':'LLM Inference &amp; Systems','cat.gpu':'GPU &amp; Performance','cat.ml':'ML &amp; Multimodal','cat.infra':'Distributed &amp; Infra','cat.lang':'Languages','cat.web':'Web, Embedded &amp; Tools','cat.research':'Research',
-    'edu.title':'Education &amp; <span>Credentials</span>','edu.me.h':'M.Eng. Software Engineering','edu.me.p':'Northwestern Polytechnical University <span class="edu-tag">985/211</span>','edu.me.d':'Sep 2024 &#8211; Jul 2027 | GPA 88/100 (Top 1%)','edu.me.link':'Thesis PDF &#8594;',
-    'edu.be.h':'B.Eng. Computer Science','edu.be.p':'Northwestern Polytechnical University <span class="edu-tag">985/211</span>','edu.be.d':'Sep 2020 &#8211; Jul 2024 | GPA 85/100 (Top 1%)','edu.be.link':'Thesis PDF &#8594;',
+    'edu.title':'Education &amp; <span>Credentials</span>','edu.me.h':'M.Eng. in Software Engineering','edu.me.s':'School of Software','edu.me.p':'<a href="https://www.nwpu.edu.cn/" target="_blank" rel="noopener">Northwestern Polytechnical University (NWPU)</a> <span class="edu-tag">985/211</span>','edu.me.d':'Sep 2024 &#8211; Jul 2027 | GPA 88/100 (Top 1%)','edu.me.link':'Thesis PDF &#8594;',
+    'edu.be.h':'B.Eng. in Computer Science &amp; Technology','edu.be.s':'School of Computer Science','edu.be.p':'<a href="https://www.nwpu.edu.cn/" target="_blank" rel="noopener">Northwestern Polytechnical University (NWPU)</a> <span class="edu-tag">985/211</span>','edu.be.d':'Sep 2020 &#8211; Jul 2024 | GPA 85/100 (Top 1%)','edu.be.link':'Thesis PDF &#8594;',
     'honor.gov':'&#127942; Chinese Gov Scholarship','honor.pres':'&#127942; Presidential Scholarship','honor.wu':'&#127942; Wu Yajun Scholarship','honor.thesis':'&#127942; Best Thesis Award','honor.out':'&#127942; Outstanding Graduate','honor.hack':'&#127942; Hackathon Winner',
     'cert.line':'&#127891; AWS Certified Machine Learning &#8211; Specialty &#183; Professional Scrum Master I (PSM I) &#183; Deep Learning Specialization (DeepLearning.AI)',
     'int.title':'Research <span>Interests</span>',
@@ -701,8 +711,8 @@ const I18N={
     'chip.all':'全部','chip.serving':'推理服务','chip.observability':'可观测性','chip.training':'训练','chip.lowprec':'低精度','chip.rag':'检索增强','chip.mlops':'模型运维','chip.systems':'系统',
     'skills.title':'技术<span>技能</span>',
     'cat.llm':'大模型推理与系统','cat.gpu':'GPU 与性能','cat.ml':'机器学习与多模态','cat.infra':'分布式与基础设施','cat.lang':'编程语言','cat.web':'Web、嵌入式与工具','cat.research':'研究',
-    'edu.title':'教育<span>背景</span>','edu.me.h':'软件工程硕士','edu.me.p':'西北工业大学 <span class="edu-tag">985/211</span>','edu.me.d':'2024年9月 – 2027年7月 | GPA 88/100（前 1%）','edu.me.link':'论文 PDF &#8594;',
-    'edu.be.h':'计算机科学学士','edu.be.p':'西北工业大学 <span class="edu-tag">985/211</span>','edu.be.d':'2020年9月 – 2024年7月 | GPA 85/100（前 1%）','edu.be.link':'论文 PDF &#8594;',
+    'edu.title':'教育<span>背景</span>','edu.me.h':'软件工程硕士','edu.me.s':'软件学院','edu.me.p':'<a href="https://www.nwpu.edu.cn/" target="_blank" rel="noopener">西北工业大学（NWPU）</a> <span class="edu-tag">985/211</span>','edu.me.d':'2024年9月 – 2027年7月 | GPA 88/100（前 1%）','edu.me.link':'论文 PDF &#8594;',
+    'edu.be.h':'计算机科学与技术学士','edu.be.s':'计算机学院','edu.be.p':'<a href="https://www.nwpu.edu.cn/" target="_blank" rel="noopener">西北工业大学（NWPU）</a> <span class="edu-tag">985/211</span>','edu.be.d':'2020年9月 – 2024年7月 | GPA 85/100（前 1%）','edu.be.link':'论文 PDF &#8594;',
     'honor.gov':'🏆 中国政府奖学金','honor.pres':'🏆 校长奖学金','honor.wu':'🏆 吴亚军奖学金','honor.thesis':'🏆 最佳论文奖','honor.out':'🏆 优秀毕业生','honor.hack':'🏆 黑客松冠军',
     'cert.line':'🎓 AWS 认证机器学习 — 专业级 · Professional Scrum Master I（PSM I） · Deep Learning 专项课程（DeepLearning.AI）',
     'int.title':'研究<span>兴趣</span>',

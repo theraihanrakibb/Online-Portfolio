@@ -64,8 +64,15 @@ body.light .card:hover,body.light .proj-card:hover,body.light .skill-cat:hover{b
 .avail-pill{animation:pulseGlow 3.2s ease-in-out infinite}
 @keyframes pulseGlow{0%,100%{box-shadow:0 0 22px rgba(0,229,255,.18)}50%{box-shadow:0 0 34px rgba(0,229,255,.38)}}
 
+/* Hero animated grid/dot backdrop */
+.hero-grid{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;will-change:transform}
+.hero-grid::before{content:'';position:absolute;inset:-60px;background-image:radial-gradient(rgba(0,229,255,.20) 1.4px,transparent 1.4px),radial-gradient(rgba(181,102,255,.13) 1.4px,transparent 1.4px);background-size:46px 46px,46px 46px;background-position:0 0,23px 23px;mask-image:radial-gradient(ellipse 72% 62% at 50% 44%,#000 28%,transparent 78%);-webkit-mask-image:radial-gradient(ellipse 72% 62% at 50% 44%,#000 28%,transparent 78%);animation:gridDrift 22s linear infinite}
+.hero-grid::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 22% 32%,rgba(0,229,255,.12),transparent 42%),radial-gradient(circle at 80% 72%,rgba(255,94,156,.12),transparent 42%)}
+@keyframes gridDrift{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-46px,-46px,0)}}
+
 /* Hero */
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;position:relative}
+.hero-inner{position:relative;z-index:1}
 .hero h1{font-size:clamp(2rem,6vw,3.8rem);font-weight:900;letter-spacing:-2px;margin-bottom:8px;line-height:1.1}
 .hero h1 .name-grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-role{font-family:'JetBrains Mono',monospace;font-size:clamp(1rem,3vw,1.4rem);color:var(--accent);margin-bottom:16px;min-height:1.8em}
@@ -90,6 +97,13 @@ body.light .card:hover,body.light .proj-card:hover,body.light .skill-cat:hover{b
 body.light .resume-menu{background:#fff}
 .hero-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .badge{padding:6px 16px;border-radius:50px;background:var(--card);border:1px solid var(--border);font-size:.78rem;color:var(--muted)}
+.proj-foot{margin-top:auto;padding-top:10px}
+.repo-badges{display:flex;gap:6px;flex-wrap:wrap}
+.repo-badges img{height:18px;border-radius:4px;display:block}
+.proj-title{font-size:1rem;margin-bottom:10px;font-weight:600;color:var(--text);display:inline-block;word-break:break-word;line-height:1.3;text-decoration:none}
+.proj-title:hover{color:var(--accent)}
+.proj-links{display:flex;gap:16px;margin-top:8px;flex-wrap:wrap}
+.proj-links .proj-link{margin-top:0;padding-top:0}
 
 .hero-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:56px;flex-wrap:wrap}
 .hero-text{text-align:center;flex:1;min-width:300px;max-width:640px}
@@ -189,6 +203,9 @@ section{padding:80px 24px}
 .contact-ico{width:52px;height:52px;border-radius:14px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700;margin:0 auto 14px;color:#080b14}
 .contact-card h3{font-size:1rem;margin-bottom:4px}
 .contact-card p{color:var(--muted);font-size:.82rem;word-break:break-all}
+.copy-btn{margin-top:14px;display:inline-flex;align-items:center;gap:6px;padding:7px 15px;border-radius:50px;background:var(--card);border:1px solid var(--border);color:var(--accent);font-size:.78rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
+.copy-btn:hover{border-color:var(--accent);background:rgba(0,229,255,.08);transform:translateY(-2px)}
+.copy-btn.done{color:#3ad17a;border-color:rgba(58,209,122,.5)}
 
 footer{text-align:center;padding:30px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--border)}
 
@@ -203,6 +220,7 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:.82rem;border
 .cmdk-box li:hover,.cmdk-box li.sel{background:var(--card-hover);color:var(--text)}
 .cmdk-box li .k{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent)}
 .cmdk-empty{padding:16px 18px;color:var(--muted);font-size:.85rem}
+.cmdk-head{padding:10px 18px 4px;font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-family:'JetBrains Mono',monospace;font-weight:600;cursor:default}
 body.light .cmdk-box{background:#fff}
 
 .fade-in{opacity:0;transform:translateY(30px);transition:all .6s ease}
@@ -286,6 +304,7 @@ body.light .tl-dot{border-color:var(--bg)}
 </nav>
 
 <section class="hero" id="hero">
+  <div class="hero-grid" id="heroGrid" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="hero-text">
       <div class="avail-pill" data-i18n="avail">🎓 Open to 2027 New Grad Roles | China &amp; Hong Kong</div>
@@ -444,7 +463,10 @@ body.light .tl-dot{border-color:var(--bg)}
           <div class="cs-row"><span class="cs-k">Setup</span><span class="cs-v" data-i18n="res1.s">Evaluated on WebVid-10M, VGGSound and UCF-101; benchmarked on H100</span></div>
           <div class="cs-row"><span class="cs-k">Systems</span><span class="cs-v" data-i18n="res1.y">vLLM-style serving scheduler (frame-level paged attention, dynamic frame batching)</span></div>
         </div>
-        <a href="https://github.com/theraihanrakibb/NVFP4-DiT" target="_blank" class="proj-link">GitHub &#8594;</a>
+        <div class="proj-links" style="margin-top:auto;padding-top:12px">
+          <a href="https://github.com/theraihanrakibb/NVFP4-DiT" target="_blank" class="proj-link">GitHub &#8594;</a>
+          <a href="project.html?id=nvfp4-dit" class="proj-link">Case study &#8594;</a>
+        </div>
       </div>
       <div class="proj-card fade-in">
         <span class="tag tag-purple" data-i18n="res2.tag">M.Eng. Thesis</span>
@@ -544,7 +566,7 @@ body.light .tl-dot{border-color:var(--bg)}
   <div class="container">
     <h2 class="sec-title fade-in" data-i18n="contact.title">Get in <span>Touch</span></h2>
     <div class="contact-grid">
-      <a href="mailto:raihanrakib.143@gmail.com" class="contact-card fade-in"><div class="contact-ico">&#9993;</div><h3 data-i18n="contact.email">Email</h3><p>raihanrakib.143@gmail.com</p></a>
+      <div class="contact-card fade-in"><div class="contact-ico">&#9993;</div><h3 data-i18n="contact.email">Email</h3><p>raihanrakib.143@gmail.com</p><button class="copy-btn" id="copyEmail" data-email="raihanrakib.143@gmail.com" aria-label="Copy email address">&#9095; Copy</button></div>
       <a href="https://linkedin.com/in/theraihanrakib" target="_blank" class="contact-card fade-in"><div class="contact-ico">in</div><h3 data-i18n="contact.linkedin">LinkedIn</h3><p>/in/theraihanrakib</p></a>
       <a href="https://github.com/theraihanrakibb" target="_blank" class="contact-card fade-in"><div class="contact-ico">&#128187;</div><h3 data-i18n="contact.github">GitHub</h3><p>/theraihanrakibb</p></a>
       <a href="tel:+8617722362949" class="contact-card fade-in"><div class="contact-ico">&#128222;</div><h3 data-i18n="contact.phone">Phone</h3><p>+86-17722362949</p></a>
@@ -782,6 +804,20 @@ if(resumeBtn){
 
 document.getElementById('year').textContent=new Date().getFullYear();
 
+/* Copy-email button (one tap to copy) */
+const copyBtn=document.getElementById('copyEmail');
+if(copyBtn){copyBtn.addEventListener('click',async()=>{
+  const email=copyBtn.dataset.email;
+  const ok=await navigator.clipboard.writeText(email).then(()=>true).catch(()=>false);
+  if(!ok){const ta=document.createElement('textarea');ta.value=email;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}ta.remove();}
+  const prev=copyBtn.innerHTML;copyBtn.innerHTML='&#10003; Copied';copyBtn.classList.add('done');
+  setTimeout(()=>{copyBtn.innerHTML=prev;copyBtn.classList.remove('done');},1800);
+});}
+
+/* Hero parallax on the animated grid backdrop */
+const heroGrid=document.getElementById('heroGrid'),heroSec=document.getElementById('hero');
+if(heroGrid&&heroSec&&!REDUCE){heroSec.addEventListener('mousemove',e=>{const r=heroSec.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-0.5;const y=(e.clientY-r.top)/r.height-0.5;heroGrid.style.transform=`translate(${x*-16}px,${y*-16}px)`;});}
+
 /* Projects as case studies: Problem -> Design -> Why it matters */
 const grid=document.getElementById('projGrid');
 function renderProjects(filter){
@@ -794,16 +830,28 @@ function renderProjects(filter){
     const prob=L==='zh'?p.prz:p.pr;
     const d=L==='zh'?p.dz:p.d;
     const w=L==='zh'?p.wz:p.w;
+    const repo=p.u.replace('https://github.com/','').replace(/\/$/,'');
+    const id=encodeURIComponent(p.n);
     const card=document.createElement('div');
     card.className='proj-card fade-in';
-    card.innerHTML=`<span class="tag tag-blue">${area}</span><h3>${p.n}</h3>`+
+    card.innerHTML=`<span class="tag tag-blue">${area}</span>`+
+      `<a class="proj-title" href="project.html?id=${id}">${p.n}</a>`+
       `<div class="cs">`+
       `<div class="cs-row"><span class="cs-k">${kP}</span><span class="cs-v">${prob}</span></div>`+
       `<div class="cs-row"><span class="cs-k">${kD}</span><span class="cs-v">${d}</span></div>`+
       `<div class="cs-row"><span class="cs-k">${kW}</span><span class="cs-v">${w}</span></div>`+
       `</div>`+
       `<div class="proj-tags">${p.t.map(x=>`<span>${x}</span>`).join('')}</div>`+
-      `<a href="${p.u}" target="_blank" rel="noopener" class="proj-link">GitHub &#8594;</a>`;
+      `<div class="proj-foot">`+
+        `<div class="repo-badges">`+
+          `<a href="${p.u}" target="_blank" rel="noopener" aria-label="GitHub stars"><img loading="lazy" alt="GitHub stars" src="https://img.shields.io/github/stars/${repo}?style=flat-square&logo=github&label=stars&color=00e5ff"></a>`+
+          `<a href="${p.u}/forks" target="_blank" rel="noopener" aria-label="GitHub forks"><img loading="lazy" alt="GitHub forks" src="https://img.shields.io/github/forks/${repo}?style=flat-square&logo=github&label=forks&color=b566ff"></a>`+
+        `</div>`+
+        `<div class="proj-links">`+
+          `<a href="${p.u}" target="_blank" rel="noopener" class="proj-link">GitHub &#8594;</a>`+
+          `<a href="project.html?id=${id}" class="proj-link">Case study &#8594;</a>`+
+        `</div>`+
+      `</div>`;
     grid.appendChild(card);
   });
   const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
@@ -830,41 +878,57 @@ document.getElementById('projFilters').addEventListener('click',e=>{
   renderProjects(e.target.dataset.filter);
 });
 
-/* Command palette (Cmd/Ctrl+K) */
+/* Command palette (Cmd/Ctrl+K): fuzzy search + recent actions */
 const CMDK=[];
 document.querySelectorAll('section[id]').forEach(s=>{
   const h=s.querySelector('.sec-title');
   CMDK.push({t:(h?h.textContent.trim():s.id)||s.id, a:'#'+s.id, k:'Section'});
 });
-projects.forEach(p=>CMDK.push({t:'Project: '+p.n, a:p.u, k:'GitHub', ext:true}));
+projects.forEach(p=>CMDK.push({t:'Project: '+p.n, a:'project.html?id='+encodeURIComponent(p.n), k:'Project'}));
+CMDK.push({t:'Case study: NVFP4-DiT', a:'project.html?id=nvfp4-dit', k:'Research', ext:true});
 CMDK.push({t:'Download Resume (PDF)', a:'assets/resume/Resume_Raihan_MLSys_NWPU_2027.pdf', k:'PDF', ext:true});
 CMDK.push({t:'Cover Letter (PDF)', a:'assets/resume/CL_Raihan_MLSys_NWPU_2027.pdf', k:'PDF', ext:true});
 CMDK.push({t:'Email', a:'mailto:raihanrakib.143@gmail.com', k:'Contact', ext:true});
 CMDK.push({t:'LinkedIn', a:'https://linkedin.com/in/theraihanrakib', k:'Contact', ext:true});
 CMDK.push({t:'GitHub', a:'https://github.com/theraihanrakibb', k:'Contact', ext:true});
 
+const RECENT_KEY='cmdk_recent';
+function getRecent(){try{return JSON.parse(localStorage.getItem(RECENT_KEY)||'[]');}catch(e){return[];}}
+function pushRecent(a){try{let r=getRecent().filter(x=>x!==a);r.unshift(a);r=r.slice(0,5);localStorage.setItem(RECENT_KEY,JSON.stringify(r));}catch(e){}}
+
+function fuzzy(q,t){q=q.toLowerCase();t=t.toLowerCase();if(!q)return 1;let ti=0,score=0,streak=0;for(const ch of q){const idx=t.indexOf(ch,ti);if(idx<0)return 0;streak=idx===ti?streak+1:0;score+=1+streak*2+(idx===0?3:0);ti=idx+1;}return score;}
+
 const cmdk=document.getElementById('cmdk'),cmdkInput=document.getElementById('cmdkInput'),cmdkList=document.getElementById('cmdkList');
 let cmdkSel=0,cmdkItems=[];
 
+function addHead(t){const h=document.createElement('li');h.className='cmdk-head';h.textContent=t;cmdkList.appendChild(h);}
+function addItem(it){
+  const i=cmdkItems.length;
+  const li=document.createElement('li');li.setAttribute('role','option');li.dataset.idx=i;
+  li.innerHTML=`<span>${it.t}</span><span class="k">${it.k}</span>`;
+  if(i===0)li.classList.add('sel');
+  li.addEventListener('click',()=>goCmdk(i));
+  cmdkList.appendChild(li);cmdkItems.push(it);
+}
+function markSel(){Array.from(cmdkList.querySelectorAll('li[data-idx]')).forEach(li=>li.classList.toggle('sel',+li.dataset.idx===cmdkSel));const el=cmdkList.querySelector('li[data-idx="'+cmdkSel+'"]');if(el)el.scrollIntoView({block:'nearest'});}
 function renderCmdk(q){
-  const s=(q||'').trim().toLowerCase();
-  cmdkItems=CMDK.filter(i=>!s||i.t.toLowerCase().includes(s));
-  cmdkList.innerHTML='';
-  if(!cmdkItems.length){cmdkList.innerHTML='<li class="cmdk-empty">No matches</li>';return;}
-  cmdkSel=0;
-  cmdkItems.forEach((it,i)=>{
-    const li=document.createElement('li');
-    li.setAttribute('role','option');
-    li.innerHTML=`<span>${it.t}</span><span class="k">${it.k}</span>`;
-    if(i===0)li.classList.add('sel');
-    li.addEventListener('click',()=>goCmdk(i));
-    cmdkList.appendChild(li);
-  });
+  const s=(q||'').trim();
+  cmdkList.innerHTML='';cmdkItems=[];cmdkSel=0;
+  if(!s){
+    const rec=getRecent();
+    if(rec.length){addHead('Recent');rec.forEach(a=>{const it=CMDK.find(i=>i.a===a);if(it)addItem(it);});}
+    addHead('Jump to');CMDK.forEach(it=>addItem(it));
+  }else{
+    const scored=CMDK.map(it=>({it,sc:fuzzy(s,it.t)})).filter(x=>x.sc>0).sort((a,b)=>b.sc-a.sc);
+    if(!scored.length){cmdkList.innerHTML='<li class="cmdk-empty">No matches</li>';return;}
+    scored.forEach(x=>addItem(x.it));
+  }
+  markSel();
 }
 function goCmdk(i){
   const it=cmdkItems[i]; if(!it)return;
-  closeCmdk();
-  if(it.a.startsWith('#')){document.querySelector(it.a).scrollIntoView({behavior:REDUCE?'auto':'smooth'});}
+  pushRecent(it.a);closeCmdk();
+  if(it.a.startsWith('#')){const el=document.querySelector(it.a);if(el)el.scrollIntoView({behavior:REDUCE?'auto':'smooth'});}
   else if(it.ext){window.open(it.a,'_blank','noopener');}
   else{location.href=it.a;}
 }
@@ -879,8 +943,7 @@ cmdkInput.addEventListener('keydown',e=>{
     e.preventDefault();
     if(!cmdkItems.length)return;
     cmdkSel=(cmdkSel+(e.key==='ArrowDown'?1:-1)+cmdkItems.length)%cmdkItems.length;
-    Array.from(cmdkList.children).forEach((li,i)=>li.classList.toggle('sel',i===cmdkSel));
-    return;
+    markSel();return;
   }
   if(e.key==='Enter'){e.preventDefault();goCmdk(cmdkSel);}
 });

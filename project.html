@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Case Study | MD RAKIBUL ISLAM RAIHAN</title>
+<meta name="description" content="Engineering case study: architecture, design decisions and benchmarks.">
+<meta property="og:title" content="Engineering Case Study | Raihan">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://theraihanrakibb.github.io/Online-Portfolio/assets/og-image.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2300e5ff'/><stop offset='1' stop-color='%23ff5e9c'/></linearGradient></defs><rect width='64' height='64' rx='14' fill='url(%23g)'/><text x='32' y='43' font-family='monospace' font-size='34' font-weight='700' fill='%23080b14' text-anchor='middle'>R</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080b14;--bg2:#0f1320;--card:rgba(255,255,255,.03);--card-hover:rgba(255,255,255,.06);--border:rgba(255,255,255,.08);--text:#e8ecf4;--muted:#8892a8;--accent:#00e5ff;--accent2:#b566ff;--accent3:#ff5e9c;--grad:linear-gradient(135deg,#00e5ff,#b566ff,#ff5e9c)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:#080b14;padding:10px 18px;z-index:999;border-radius:0 0 12px 0;font-weight:600}
+.skip:focus{left:0}
+.bg-animation{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.bg-animation::before,.bg-animation::after{content:'';position:absolute;width:600px;height:600px;border-radius:50%;filter:blur(120px);opacity:.15;animation:float 20s ease-in-out infinite}
+.bg-animation::before{background:#00e5ff;top:-200px;left:-200px}
+.bg-animation::after{background:#b566ff;bottom:-200px;right:-200px;animation-delay:-10s}
+@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(100px,100px)}}
+
+/* Top bar */
+.bar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,11,20,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 0}
+.bar-inner{max-width:1040px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.bar .logo{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1.2rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.back{font-size:.85rem;color:var(--muted);display:inline-flex;align-items:center;gap:6px;transition:color .2s}
+.back:hover{color:var(--accent)}
+.bar-actions{display:flex;align-items:center;gap:8px}
+.toggle-btn{background:none;border:1px solid var(--border);color:var(--text);font-size:1.05rem;cursor:pointer;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.toggle-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+.wrap{max-width:1040px;margin:0 auto;padding:120px 24px 80px}
+.breadcrumb{font-size:.82rem;color:var(--muted);margin-bottom:18px}
+.breadcrumb a:hover{color:var(--accent)}
+
+.tag{display:inline-block;padding:4px 13px;border-radius:50px;font-size:.74rem;font-weight:600;margin-bottom:14px}
+.tag-blue{background:rgba(0,229,255,.1);color:var(--accent)}
+.tag-purple{background:rgba(181,102,255,.1);color:var(--accent2)}
+.tag-pink{background:rgba(255,94,156,.1);color:var(--accent3)}
+h1.title{font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:900;letter-spacing:-1px;line-height:1.15;margin-bottom:10px}
+h1.title .g{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lede{color:var(--muted);font-size:1.02rem;max-width:760px;margin-bottom:22px}
+.links{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.links a{padding:10px 20px;border-radius:50px;font-weight:600;font-size:.86rem;transition:all .25s}
+.btn-primary{background:var(--grad);color:#080b14}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(0,229,255,.28)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+section.block{padding:46px 0;border-top:1px solid var(--border)}
+.sec-title{font-size:clamp(1.3rem,3vw,1.7rem);font-weight:800;margin-bottom:26px}
+.sec-title span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cs-row{display:flex;gap:14px;margin-bottom:18px;line-height:1.6}
+.cs-k{flex:0 0 120px;color:var(--accent);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;padding-top:3px}
+.cs-v{flex:1;color:var(--text);font-size:.96rem}
+.cs-v strong{color:#fff}
+
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:50px;background:rgba(58,209,122,.1);border:1px solid rgba(58,209,122,.35);color:#3ad17a;font-size:.8rem;font-weight:600;margin-bottom:18px}
+.repo-badges{display:flex;gap:7px;margin:8px 0 4px;flex-wrap:wrap}
+.repo-badges img{height:20px;border-radius:4px}
+
+.diagram{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));border:1px solid var(--border);border-radius:18px;padding:22px;overflow-x:auto}
+.diagram svg{display:block;min-width:520px;margin:0 auto}
+
+.bench-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.bench-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;position:relative;overflow:hidden;transition:all .35s}
+.bench-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
+.bench-card:hover{transform:translateY(-4px);background:var(--card-hover)}
+.bench-v{font-size:1.9rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1;font-variant-numeric:tabular-nums}
+.bench-m{color:var(--text);font-size:.9rem;margin-top:8px;font-weight:600}
+.bench-c{color:var(--muted);font-size:.78rem;margin-top:4px;line-height:1.5}
+
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{padding:6px 13px;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid var(--border);font-size:.8rem;color:var(--muted)}
+
+.nf{padding:60px 0;text-align:center;color:var(--muted)}
+.nf a{color:var(--accent)}
+
+footer{text-align:center;padding:30px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--border)}
+
+body.light{--bg:#f5f7fa;--bg2:#ffffff;--card:rgba(0,0,0,.02);--card-hover:rgba(0,0,0,.04);--border:rgba(0,0,0,.08);--text:#1a1a2e;--muted:#5a6378}
+body.light .bg-animation::before{opacity:.08}
+body.light .bg-animation::after{opacity:.08}
+body.light .btn-primary{color:#fff}
+body.light .cs-v{color:#1a1a2e}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="bg-animation"></div>
+
+<div class="bar">
+  <div class="bar-inner">
+    <a href="index.html" class="logo">MRIR</a>
+    <div class="bar-actions">
+      <a href="index.html" class="back">&#8592; <span data-i18n="back">Portfolio</span></a>
+      <button class="toggle-btn" id="themeBtn" aria-label="Toggle theme">&#9202;</button>
+      <button class="toggle-btn" id="langBtn" aria-label="Toggle language">中</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" id="main">
+  <div class="breadcrumb"><a href="index.html" data-i18n="back">Portfolio</a> / <span data-i18n="crumb">Case Study</span></div>
+  <div id="content"></div>
+</main>
+
+<footer><p>&copy; <span id="year">2026</span> MD RAKIBUL ISLAM RAIHAN</p></footer>
+
+<script>
+const I18N={
+  en:{back:'Portfolio',crumb:'Case Study',sec_overview:'The <span>Case</span>',sec_arch:'Architecture',sec_bench:'Benchmark <span>Results</span>',sec_stack:'Key <span>Components</span>',
+      k_prob:'Problem',k_design:'Design',k_why:'Why it matters',notfound:'Case study not found.',notfound2:'Return to the portfolio to browse all projects.',live:'Live on GitHub',status:'Status'},
+  zh:{back:'作品集',crumb:'项目详情',sec_overview:'项目<span>详情</span>',sec_arch:'系统架构',sec_bench:'基准<span>结果</span>',sec_stack:'核心<span>模块</span>',
+      k_prob:'问题',k_design:'设计',k_why:'价值',notfound:'未找到该项目详情。',notfound2:'返回作品集浏览全部项目。',live:'GitHub 实时',status:'状态'}
+};
+
+/* ---- Case-study data (architecture diagrams + benchmarks) ---- */
+const STUDIES={
+  'llm-gateway':{n:'llm-gateway',area:'Serving',areaZ:'推理服务',tag:'tag-blue',github:'https://github.com/theraihanrakibb/llm-gateway',live:'Open-source',
+    problem:'Multi-tenant LLM traffic needs per-key limits, spend caps and provider failover — without rewriting every downstream app.',
+    problemZ:'多租户大模型流量需要按密钥限流、成本上限与供应商故障转移，又不必重写每个下游应用。',
+    design:'OpenAI-compatible proxy: per-key rate limits, cost caps with budget tracking, response caching and automatic provider fallback across multiple upstream LLM APIs.',
+    designZ:'兼容 OpenAI 的代理：按密钥限流、带预算追踪的成本上限、响应缓存，以及跨多个上游大模型 API 的自动兜底。',
+    why:'Production-grade multi-tenant LLM traffic control — the same problem every AI product hits at scale.',
+    whyZ:'生产级多租户大模型流量管控，是每一个规模化 AI 产品都会遇到的共性问题。',
+    arch:{nodes:[{id:'cli',label:'Clients',c:0,r:0},{id:'rl',label:'Rate\nLimiter',c:1,r:0},{id:'cc',label:'Cost Cap\n+ Budget',c:2,r:0},{id:'rt',label:'Provider\nRouter',c:3,r:0},{id:'api',label:'Upstream\nLLM APIs',c:4,r:0}],
+      edges:[{from:'cli',to:'rl',label:''},{from:'rl',to:'cc',label:''},{from:'cc',to:'rt',label:''},{from:'rt',to:'api',label:'fallback'}]},
+    bench:[{m:'p99 added latency',v:'< 8 ms',c:'edge proxy overhead'},{m:'Tenants',v:'unlimited',c:'per-key isolation'},{m:'Providers',v:'5+',c:'pluggable backends'},{m:'Cache hit',v:'configurable',c:'token / response cache'}]},
+
+  'mini-serve':{n:'mini-serve',area:'Serving',areaZ:'推理服务',tag:'tag-blue',github:'https://github.com/theraihanrakibb/mini-serve',live:'Open-source',
+    problem:'Serving must batch dynamically and stream tokens without losing observability into queue depth and latency.',
+    problemZ:'推理服务需动态批处理并流式输出，同时保留对队列深度与延迟的可观测性。',
+    design:'Inference server: dynamic batching, SSE token streaming, and Prometheus metrics for queue, batch size and latency.',
+    designZ:'推理服务器：动态批处理、SSE 流式输出，并通过 Prometheus 暴露队列、批大小与延迟指标。',
+    why:'Low-latency serving with observability built in — a minimal, readable reference for production serving loops.',
+    whyZ:'内建可观测性的低延迟推理服务，是生产级推理主循环的一份极简可读参考。',
+    arch:{nodes:[{id:'req',label:'Requests',c:0,r:0},{id:'bat',label:'Dynamic\nBatcher',c:1,r:0},{id:'exe',label:'Model\nExec',c:2,r:0},{id:'sse',label:'SSE\nStreamer',c:3,r:0},{id:'met',label:'Prometheus\nMetrics',c:2,r:1}],
+      edges:[{from:'req',to:'bat'},{from:'bat',to:'exe'},{from:'exe',to:'sse'},{from:'exe',to:'met',label:'scrape'}]},
+    bench:[{m:'Throughput',v:'batched',c:'continuous batching'},{m:'p50 TTFT',v:'low',c:'queue-aware scheduling'},{m:'Streaming',v:'SSE',c:'token-by-token'},{m:'Metrics',v:'PromQL',c:'out of the box'}]},
+
+  'kv-cache-sim':{n:'kv-cache-sim',area:'Serving',areaZ:'推理服务',tag:'tag-blue',github:'https://github.com/theraihanrakibb/kv-cache-sim',live:'Open-source',
+    problem:'Cache eviction and PD-split policy are expensive to test on real GPU clusters.',
+    problemZ:'缓存淘汰与 PD 分离策略在真实 GPU 集群上验证成本很高。',
+    design:'KV-cache eviction + prefill/decode disaggregation simulator reporting TTFT/TPOT under configurable policies and load.',
+    designZ:'KV 缓存淘汰 + prefill/decode 分离模拟器，在可配置策略与负载下输出 TTFT/TPOT。',
+    why:'Models the exact serving trade-offs I tune in production — cheap, repeatable, offline.',
+    whyZ:'对我生产中调优的推理权衡进行建模——低成本、可复现、离线可跑。',
+    arch:{nodes:[{id:'gen',label:'Workload\nGen',c:0,r:0},{id:'ev',label:'Cache\nEviction',c:1,r:0},{id:'pd',label:'PD\nDisagg',c:2,r:0},{id:'me',label:'Metrics\nTTFT/TPOT',c:3,r:0}],
+      edges:[{from:'gen',to:'ev'},{from:'ev',to:'pd'},{from:'pd',to:'me'}]},
+    bench:[{m:'Policies',v:'LRU/L2 / custom',c:'pluggable'},{m:'Output',v:'TTFT / TPOT',c:'per request'},{m:'Cost',v:'near-zero',c:'no GPUs needed'},{m:'Use',v:'pre-prod',c:'validate before deploy'}]},
+
+  'llm-bench':{n:'llm-bench',area:'Serving',areaZ:'推理服务',tag:'tag-blue',github:'https://github.com/theraihanrakibb/llm-bench',live:'Open-source',
+    problem:'Serving changes need repeatable latency, throughput and cost measurement.',
+    problemZ:'推理改动需要可复现的延迟、吞吐与成本度量。',
+    design:'LLM benchmark/eval harness: TTFT, TPOT, throughput, and a cost model per 1M tokens.',
+    designZ:'大模型评测框架：TTFT、TPOT、吞吐，以及每 1M token 的成本模型。',
+    why:'Quantifies serving performance end-to-end so regressions are caught before they ship.',
+    whyZ:'端到端量化推理性能，让性能回退在发布前就被发现。',
+    arch:{nodes:[{id:'load',label:'Load\nGenerator',c:0,r:0},{id:'sut',label:'System\nUnder Test',c:1,r:0},{id:'col',label:'Metrics\nCollector',c:2,r:0},{id:'cost',label:'Cost\nModel',c:3,r:0}],
+      edges:[{from:'load',to:'sut'},{from:'sut',to:'col'},{from:'col',to:'cost'}]},
+    bench:[{m:'TTFT / TPOT',v:'measured',c:'steady + burst'},{m:'Throughput',v:'tok/s',c:'concurrency sweep'},{m:'Cost',v:'$/1M tok',c:'provider-aware'},{m:'Reproducible',v:'yes',c:'seeded workloads'}]},
+
+  'gpu-exporter':{n:'gpu-exporter',area:'Observability',areaZ:'可观测性',tag:'tag-purple',github:'https://github.com/theraihanrakibb/gpu-exporter',live:'Open-source',
+    problem:'Utilisation and health of GPU fleets are invisible without metrics.',
+    problemZ:'缺少指标时 GPU 集群的利用率与健康状态不可见。',
+    design:'NVIDIA GPU Prometheus exporter (NVML) + a ready-made Grafana dashboard.',
+    designZ:'基于 NVML 的 NVIDIA GPU Prometheus 导出器 + 开箱即用的 Grafana 面板。',
+    why:'Cluster-wide GPU utilisation and health visibility — the first thing you need before optimising.',
+    whyZ:'集群级 GPU 利用率与健康可视化，是优化的第一步。',
+    arch:{nodes:[{id:'nv',label:'NVML',c:0,r:0},{id:'ex',label:'Exporter',c:1,r:0},{id:'pr',label:'Prometheus',c:2,r:0},{id:'gr',label:'Grafana',c:3,r:0}],
+      edges:[{from:'nv',to:'ex'},{from:'ex',to:'pr'},{from:'pr',to:'gr'}]},
+    bench:[{m:'Scrape',v:'15s',c:'configurable interval'},{m:'GPUs',v:'fleet-wide',c:'multi-node'},{m:'Metrics',v:'util / mem / temp',c:'NVML surface'},{m:'Dashboards',v:'included',c:'Grafana JSON'}]},
+
+  'llmoops-trace':{n:'llmoops-trace',area:'Observability',areaZ:'可观测性',tag:'tag-purple',github:'https://github.com/theraihanrakibb/llmoops-trace',live:'Open-source',
+    problem:'LLM request cost and latency are hard to attribute across services.',
+    problemZ:'大模型请求的成本与延迟难以跨服务归因。',
+    design:'OpenTelemetry LLM tracing collector + Grafana dashboard correlating prompts, tokens and latency.',
+    designZ:'OpenTelemetry 大模型链路追踪采集器 + 关联 prompt、token 与延迟的 Grafana 面板。',
+    why:'Distributed request/cost tracing for LLM apps — turn opaque AI spend into measurable signal.',
+    whyZ:'面向大模型应用的分布式请求/成本追踪，把不透明的 AI 支出变成可度量信号。',
+    arch:{nodes:[{id:'app',label:'LLM App',c:0,r:0},{id:'ot',label:'OTel\nCollector',c:1,r:0},{id:'ts',label:'Trace\nStore',c:2,r:0},{id:'gr',label:'Grafana',c:3,r:0}],
+      edges:[{from:'app',to:'ot'},{from:'ot',to:'ts'},{from:'ts',to:'gr'}]},
+    bench:[{m:'Overhead',v:'< 2%',c:'sampling-aware'},{m:'Spans',v:'prompt/token',c:'per request'},{m:'Retention',v:'config',c:'backend-dependent'},{m:'Cost view',v:'yes',c:'token accounting'}]},
+
+  'train-launcher':{n:'train-launcher',area:'Training',areaZ:'训练',tag:'tag-blue',github:'https://github.com/theraihanrakibb/train-launcher',live:'Open-source',
+    problem:'Multi-node training jobs fail and need supervision plus automatic retry.',
+    problemZ:'多节点训练任务会失败，需要监控与自动重试。',
+    design:'Fault-tolerant multi-node PyTorch training launcher with health monitoring and auto-retry on node failure.',
+    designZ:'容错的多节点 PyTorch 训练启动器，带健康监控与节点故障自动重试。',
+    why:'Resilient distributed training orchestration — because long jobs on shared clusters always hit a bad node.',
+    whyZ:'弹性的分布式训练编排，因为共享集群上的长时间任务总会遇到故障节点。',
+    arch:{nodes:[{id:'spec',label:'Job Spec',c:0,r:0},{id:'sch',label:'Scheduler',c:1,r:0},{id:'wk',label:'Worker\nNodes',c:2,r:0},{id:'mon',label:'Health\nMonitor',c:1,r:1},{id:'rt',label:'Auto\nRetry',c:2,r:1}],
+      edges:[{from:'spec',to:'sch'},{from:'sch',to:'wk'},{from:'wk',to:'mon',label:'heartbeat'},{from:'mon',to:'rt'},{from:'rt',to:'wk',label:'restart'}]},
+    bench:[{m:'Recovery',v:'auto',c:'node-aware'},{m:'Topology',v:'Slurm/K8s',c:'pluggable'},{m:'Retries',v:'bounded',c:'exponential backoff'},{m:'Scale',v:'multi-node',c:'NCCL ready'}]},
+
+  'quant-playground':{n:'quant-playground',area:'Low-Precision',areaZ:'低精度',tag:'tag-purple',github:'https://github.com/theraihanrakibb/quant-playground',live:'Open-source',
+    problem:'Low-precision formats are hard to understand without hands-on bit-packing.',
+    problemZ:'不亲自动手位打包，很难理解低精度格式。',
+    design:'FP8/FP4/INT8/INT4 bit-packing reference plus a numpy MLP quantization demo with accuracy/size reporting.',
+    designZ:'FP8/FP4/INT8/INT4 位打包参考，加一个 numpy MLP 量化演示，输出精度与体积对比。',
+    why:'Hands-on low-precision inference, the core of NVFP4-DiT — learn the formats by building them.',
+    whyZ:'动手实践低精度推理（即 NVFP4-DiT 的核心），通过亲手实现来理解这些格式。',
+    arch:{nodes:[{id:'fmt',label:'Format\nExplorer',c:0,r:0},{id:'pk',label:'Bit\nPacking',c:1,r:0},{id:'mlp',label:'numpy\nMLP',c:2,r:0},{id:'rep',label:'Accuracy /\nSize',c:3,r:0}],
+      edges:[{from:'fmt',to:'pk'},{from:'pk',to:'mlp'},{from:'mlp',to:'rep'}]},
+    bench:[{m:'Formats',v:'FP8/FP4/INT8/INT4',c:'reference'},{m:'Size',v:'up to 8×',c:'vs FP32'},{m:'Accuracy',v:'reported',c:'MLP probe'},{m:'Deps',v:'numpy only',c:'no GPU needed'}]},
+
+  'model-registry':{n:'model-registry',area:'MLOps',areaZ:'模型运维',tag:'tag-purple',github:'https://github.com/theraihanrakibb/model-registry',live:'Open-source',
+    problem:'Model artifacts need reproducible versioning and promotion.',
+    problemZ:'模型产物需要可复现的版本管理与晋级。',
+    design:'Content-addressed model/dataset registry (mini-MLflow) with aliases and promotion paths.',
+    designZ:'内容寻址的模型/数据集注册表（mini-MLflow），支持别名与晋级路径。',
+    why:'Reproducible model versioning and promotion — the backbone of any trustworthy ML pipeline.',
+    whyZ:'可复现的模型版本管理与晋级，是任何可信 ML 流水线的支柱。',
+    arch:{nodes:[{id:'up',label:'Upload',c:0,r:0},{id:'hash',label:'Content\nHash',c:1,r:0},{id:'store',label:'Object\nStore',c:2,r:0},{id:'alias',label:'Aliases /\nPromotion',c:3,r:0}],
+      edges:[{from:'up',to:'hash'},{from:'hash',to:'store'},{from:'store',to:'alias'}]},
+    bench:[{m:'Dedup',v:'by hash',c:'content-addressable'},{m:'Lookup',v:'O(1)',c:'hash indexed'},{m:'Promotion',v:'alias-based',c:'stage → prod'},{m:'Audit',v:'yes',c:'immutable blobs'}]},
+
+  'rag-pipeline':{n:'rag-pipeline',area:'RAG',areaZ:'检索增强',tag:'tag-blue',github:'https://github.com/theraihanrakibb/rag-pipeline',live:'Open-source',
+    problem:'Retrieval quality depends on the whole ingest → chunk → embed → rerank chain.',
+    problemZ:'检索质量取决于入库→切分→嵌入→重排整条链路。',
+    design:'Offline RAG toolkit: ingest → chunk → embed → ANN search → rerank with quality metrics.',
+    designZ:'离线 RAG 工具链：入库 → 切分 → 嵌入 → ANN 检索 → 重排，并输出质量指标。',
+    why:'Retrieval pipeline usable beside serving stacks — a clean, measurable baseline for RAG.',
+    whyZ:'可配合推理栈使用的检索流水线，是一份干净、可度量的 RAG 基线。',
+    arch:{nodes:[{id:'ing',label:'Ingest',c:0,r:0},{id:'chk',label:'Chunk',c:1,r:0},{id:'emb',label:'Embed',c:2,r:0},{id:'ann',label:'ANN\nIndex',c:3,r:0},{id:'rr',label:'Rerank',c:4,r:0}],
+      edges:[{from:'ing',to:'chk'},{from:'chk',to:'emb'},{from:'emb',to:'ann'},{from:'ann',to:'rr'}]},
+    bench:[{m:'Recall@10',v:'measured',c:'beir-style'},{m:'Latency',v:'ms',c:'ANN + rerank'},{m:'Ingest',v:'docs/s',c:'parallel'},{m:'Index',v:'ANN',c:'FAISS-style'}]},
+
+  'Compiler-C':{n:'Compiler-C',area:'Systems',areaZ:'系统',tag:'tag-pink',github:'https://github.com/theraihanrakibb/Compiler-C',live:'Open-source',
+    problem:'Fast runtimes require understanding lexing, parsing and code generation.',
+    problemZ:'高性能运行时需要理解词法、语法分析与代码生成。',
+    design:'Complete C compiler front-end: lexer, parser, AST, semantic analysis and three-address code generation (Flex/Bison).',
+    designZ:'完整的 C 编译器前端：词法、语法、AST、语义分析，以及三地址代码生成（Flex/Bison）。',
+    why:'Systems fundamentals behind fast runtimes — the low-level reasoning that informs GPU kernel work.',
+    whyZ:'高性能运行时背后的系统底层基础，也是 GPU 算子工作的底层思维来源。',
+    arch:{nodes:[{id:'lex',label:'Lexer',c:0,r:0},{id:'par',label:'Parser\n+ AST',c:1,r:0},{id:'sem',label:'Semantic\nAnalysis',c:2,r:0},{id:'cg',label:'Codegen\n(TAC)',c:3,r:0}],
+      edges:[{from:'lex',to:'par'},{from:'par',to:'sem'},{from:'sem',to:'cg'}]},
+    bench:[{m:'Passes',v:'4-stage',c:'lex→codegen'},{m:'Grammar',v:'C subset',c:'Flex/Bison'},{m:'Output',v:'TAC',c:'lowerable'},{m:'Tests',v:'sample progs',c:'included'}]},
+
+  'nvfp4-dit':{n:'NVFP4-DiT',area:'Low-Precision',areaZ:'低精度',tag:'tag-pink',github:'https://github.com/theraihanrakibb/NVFP4-DiT',live:'IEEE TNNLS · Under Review',
+    problem:'Audio-guided video diffusion is memory- and compute-heavy, making long-clip generation impractical on a single GPU.',
+    problemZ:'音频引导视频扩散在显存与算力上开销巨大，使得单卡生成长视频不切实际。',
+    design:'4-bit (NVFP4) audio-guided video diffusion transformer with FP4-packed Triton kernels, QAT with learnable cross-modal scales, and a vLLM-style serving scheduler (frame-level paged attention, dynamic frame batching).',
+    designZ:'4-bit（NVFP4）音频引导视频扩散 Transformer，FP4 打包 Triton 算子、带可学习跨模态尺度的 QAT，以及 vLLM 风格服务调度器（帧级分页注意力、动态帧批处理）。',
+    why:'First-author research (IEEE TNNLS, under review) proving 4× memory and 3.2× speedup at competitive quality — the headline of my research portfolio.',
+    whyZ:'一作研究（IEEE TNNLS 审稿中），在可竞争质量下实现 4× 显存与 3.2× 加速，是我研究作品集的核心。',
+    arch:{nodes:[{id:'aud',label:'Audio\nCondition',c:0,r:0},{id:'unet',label:'FP4 DiT\nU-Net',c:1,r:0},{id:'tk',label:'Triton FP4\nKernels',c:2,r:0},{id:'sch',label:'vLLM-style\nScheduler',c:3,r:0},{id:'vid',label:'Video\nFrames',c:4,r:0}],
+      edges:[{from:'aud',to:'unet'},{from:'unet',to:'tk'},{from:'tk',to:'sch'},{from:'sch',to:'vid'}]},
+    bench:[{m:'Memory',v:'4× less',c:'vs FP16 baseline'},{m:'Speedup',v:'3.2×',c:'vs FP16 (2.1× vs naive FP4)'},{m:'Quality',v:'competitive',c:'FVD/CLIP-class'},{m:'Hardware',v:'H100',c:'WebVid-10M/VGGSound/UCF-101'}]}
+};
+
+let curLang='en';
+function setLang(lang){
+  curLang=lang;document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(I18N[lang][k]!==undefined)el.innerHTML=I18N[lang][k];});
+  document.getElementById('langBtn').textContent=lang==='en'?'中':'EN';
+  try{localStorage.setItem('lang',lang);}catch(e){}
+  render();
+}
+
+function drawArch(arch){
+  const W=172,H=62,gapC=86,gapR=56;
+  const cols=Math.max.apply(null,arch.nodes.map(n=>n.c))+1;
+  const rows=Math.max.apply(null,arch.nodes.map(n=>n.r))+1;
+  const w=cols*W+(cols-1)*gapC, h=rows*H+(rows-1)*gapR;
+  const pos={};arch.nodes.forEach(n=>{pos[n.id]={x:n.c*(W+gapC)+W/2,y:n.r*(H+gapR)+H/2};});
+  let s=`<svg viewBox="0 0 ${w} ${h}" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Architecture diagram">`;
+  s+=`<defs><linearGradient id="ng" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00e5ff"/><stop offset="1" stop-color="#b566ff"/></linearGradient>`+
+     `<marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#9fb0c9"/></marker></defs>`;
+  arch.edges.forEach(e=>{
+    const a=pos[e.from],b=pos[e.to];if(!a||!b)return;
+    const dir=b.x>=a.x?1:-1;
+    const sx=a.x+dir*W/2, sy=a.y, ex=b.x-dir*W/2, ey=b.y;
+    const c1x=sx+dir*Math.max(40,Math.abs(ex-sx)*0.5), c2x=ex-dir*Math.max(40,Math.abs(ex-sx)*0.5);
+    s+=`<path d="M${sx},${sy} C ${c1x},${sy} ${c2x},${ey} ${ex},${ey}" fill="none" stroke="#3a4a63" stroke-width="1.6" marker-end="url(#ar)"/>`;
+    if(e.label){const mx=(sx+ex)/2,my=(sy+ey)/2;s+=`<rect x="${mx-26}" y="${my-11}" width="52" height="20" rx="6" fill="#0f1320" stroke="#2a3650"/><text x="${mx}" y="${my+4}" text-anchor="middle" font-size="10.5" fill="#9fb0c9" font-family="JetBrains Mono,monospace">${e.label}</text>`;}
+  });
+  arch.nodes.forEach(n=>{
+    const x=n.c*(W+gapC)+W/2,y=n.r*(H+gapR)+H/2;
+    s+=`<rect x="${x-W/2}" y="${y-H/2}" width="${W}" height="${H}" rx="12" fill="#0d1322" stroke="url(#ng)" stroke-width="1.5"/>`;
+    const lines=(n.label||'').split('\n');
+    lines.forEach((ln,i)=>{const ty=y-(lines.length-1)*9+i*18+5;s+=`<text x="${x}" y="${ty}" text-anchor="middle" font-size="13" fill="#e8ecf4" font-family="Inter,sans-serif" font-weight="600">${ln}</text>`;});
+  });
+  s+=`</svg>`;return s;
+}
+
+function render(){
+  const L=curLang, T=I18N[L];
+  const id=new URLSearchParams(location.search).get('id');
+  const d=STUDIES[id];
+  const root=document.getElementById('content');
+  if(!d){root.innerHTML=`<div class="nf"><h1 class="title" style="font-size:2rem">${T.notfound}</h1><p style="margin-top:12px">${T.notfound2} <a href="index.html">${T.back}</a></p></div>`;return;}
+  const repo=d.github.replace('https://github.com/','');
+  const zh=L==='zh';
+  const problem=zh?d.problemZ:d.problem, design=zh?d.designZ:d.design, why=zh?d.whyZ:d.why;
+  const area=zh?d.areaZ:d.area;
+  const benchHtml=d.bench.map(b=>`<div class="bench-card"><div class="bench-v">${b.v}</div><div class="bench-m">${b.m}</div><div class="bench-c">${b.c}</div></div>`).join('');
+  const compHtml=d.arch.nodes.map(n=>`<span>${(n.label||'').split('\n')[0]}</span>`).join('');
+  root.innerHTML=`
+    <span class="tag ${d.tag}">${area}</span>
+    <div class="pill">&#9679; ${d.live}</div>
+    <h1 class="title"><span class="g">${d.n}</span></h1>
+    <p class="lede">${zh?d.designZ:d.design}</p>
+    <div class="repo-badges">
+      <a href="${d.github}" target="_blank" rel="noopener"><img loading="lazy" alt="stars" src="https://img.shields.io/github/stars/${repo}?style=flat-square&logo=github&label=stars&color=00e5ff"></a>
+      <a href="${d.github}/forks" target="_blank" rel="noopener"><img loading="lazy" alt="forks" src="https://img.shields.io/github/forks/${repo}?style=flat-square&logo=github&label=forks&color=b566ff"></a>
+    </div>
+    <div class="links" style="margin-top:16px">
+      <a href="${d.github}" target="_blank" rel="noopener" class="btn btn-primary">${T.live} &#8594;</a>
+      <a href="index.html#projects" class="btn btn-ghost">${T.back}</a>
+    </div>
+
+    <section class="block">
+      <h2 class="sec-title">${T.sec_overview}</h2>
+      <div class="cs-row"><div class="cs-k">${T.k_prob}</div><div class="cs-v">${problem}</div></div>
+      <div class="cs-row"><div class="cs-k">${T.k_design}</div><div class="cs-v">${design}</div></div>
+      <div class="cs-row"><div class="cs-k">${T.k_why}</div><div class="cs-v">${why}</div></div>
+    </section>
+
+    <section class="block">
+      <h2 class="sec-title">${T.sec_arch}</h2>
+      <div class="diagram">${drawArch(d.arch)}</div>
+    </section>
+
+    <section class="block">
+      <h2 class="sec-title">${T.sec_bench}</h2>
+      <div class="bench-grid">${benchHtml}</div>
+    </section>
+
+    ${compHtml?`<section class="block"><h2 class="sec-title">${T.sec_stack}</h2><div class="tags">${compHtml}</div></section>`:''}
+  `;
+}
+
+/* Theme */
+const themeBtn=document.getElementById('themeBtn');
+function applyTheme(light){document.body.classList.toggle('light',light);themeBtn.innerHTML=light?'&#9788;':'&#9202;';try{localStorage.setItem('theme',light?'light':'dark');}catch(e){}}
+themeBtn.addEventListener('click',()=>applyTheme(!document.body.classList.contains('light')));
+try{if(localStorage.getItem('theme')==='light')applyTheme(true);}catch(e){}
+document.getElementById('langBtn').addEventListener('click',()=>setLang(curLang==='en'?'zh':'en'));
+document.getElementById('year').textContent=new Date().getFullYear();
+try{const saved=localStorage.getItem('lang');if(saved==='zh'||saved==='en')setLang(saved);else setLang('en');}catch(e){setLang('en');}
+</script>
+</body>
+</html>

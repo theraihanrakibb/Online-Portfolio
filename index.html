@@ -53,6 +53,18 @@ nav.scrolled{background:rgba(8,11,20,.8);backdrop-filter:blur(20px);border-botto
 .cmdk-hint:hover{border-color:var(--accent);color:var(--accent)}
 .menu-btn{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
 
+/* Scroll progress, active nav, back-to-top, depth polish */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:150;transition:width .08s linear}
+.nav-links a.active{color:var(--accent)}
+.nav-links a.active::after{width:100%}
+.to-top{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:1.05rem;cursor:pointer;z-index:120;opacity:0;pointer-events:none;transition:all .3s;backdrop-filter:blur(10px)}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
+.card:hover,.proj-card:hover,.skill-cat:hover,.edu-card:hover,.contact-card:hover{box-shadow:0 14px 44px rgba(0,229,255,.10)}
+body.light .card:hover,body.light .proj-card:hover,body.light .skill-cat:hover{box-shadow:0 14px 44px rgba(0,0,0,.10)}
+.avail-pill{animation:pulseGlow 3.2s ease-in-out infinite}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 22px rgba(0,229,255,.18)}50%{box-shadow:0 0 34px rgba(0,229,255,.38)}}
+
 /* Hero */
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;position:relative}
 .hero h1{font-size:clamp(2rem,6vw,3.8rem);font-weight:900;letter-spacing:-2px;margin-bottom:8px;line-height:1.1}
@@ -247,6 +259,7 @@ body.light .tl-dot{border-color:var(--bg)}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="progress" id="progress"></div>
 <div class="bg-animation"></div>
 
 <nav id="nav">
@@ -520,6 +533,8 @@ body.light .tl-dot{border-color:var(--bg)}
 
 <footer><p>&copy; <span id="year">2026</span> MD RAKIBUL ISLAM RAIHAN</p></footer>
 
+<button class="to-top" id="toTop" aria-label="Back to top">&#8593;</button>
+
 <div class="cmdk" id="cmdk" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
   <div class="cmdk-box">
     <input id="cmdkInput" type="text" placeholder="Jump to a section, project or link&hellip;  (Esc to close)" aria-label="Search site">
@@ -680,7 +695,24 @@ function tick(){const c=roles[ri];if(!del){t.textContent=c.slice(0,++ci);if(ci==
 tick();
 
 const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
+const prog=document.getElementById('progress');
+const toTop=document.getElementById('toTop');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',scrollY>50);
+  const max=document.documentElement.scrollHeight-innerHeight;
+  if(prog)prog.style.width=(max>0?Math.min(100,scrollY/max*100):0)+'%';
+  if(toTop)toTop.classList.toggle('show',scrollY>600);
+},{passive:true});
+if(toTop)toTop.addEventListener('click',()=>scrollTo({top:0,behavior:REDUCE?'auto':'smooth'}));
+
+/* Scroll-spy: highlight the nav link for the section currently in view */
+const navLinksArr=[...document.querySelectorAll('.nav-links a')];
+const spy=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    navLinksArr.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));
+  }
+}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
 
 const mb=document.getElementById('menuBtn'),nl=document.getElementById('navLinks');
 mb.addEventListener('click',()=>{nl.classList.toggle('open');mb.innerHTML=nl.classList.contains('open')?'&times;':'&#9776;';});
@@ -711,10 +743,13 @@ const cntObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)ani
 document.querySelectorAll('.stat-num[data-val]').forEach(el=>cntObs.observe(el));
 
 const themeBtn=document.getElementById('themeBtn');
-themeBtn.addEventListener('click',()=>{
-  document.body.classList.toggle('light');
-  themeBtn.innerHTML=document.body.classList.contains('light')?'&#9788;':'&#9202;';
-});
+function applyTheme(light){
+  document.body.classList.toggle('light',light);
+  themeBtn.innerHTML=light?'&#9788;':'&#9202;';
+  try{localStorage.setItem('theme',light?'light':'dark');}catch(e){}
+}
+themeBtn.addEventListener('click',()=>applyTheme(!document.body.classList.contains('light')));
+try{const t0=localStorage.getItem('theme');if(t0==='light')applyTheme(true);}catch(e){}
 
 document.getElementById('langBtn').addEventListener('click',()=>{setLang(curLang==='en'?'zh':'en');});
 
